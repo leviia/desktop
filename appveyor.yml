@@ -15,6 +15,11 @@ init:
         & "C:\Python39-x64\python.exe" "C:\CraftMaster\CraftMaster\CraftMaster.py" --config "$env:APPVEYOR_BUILD_FOLDER\appveyor.ini" --variables "APPVEYOR_BUILD_FOLDER=$env:APPVEYOR_BUILD_FOLDER" --target $env:TARGET -c $args
         if($LASTEXITCODE -ne 0) {exit $LASTEXITCODE}
     }
+    function craftnofail() {
+        cmd /C "echo %PATH%"
+        & "C:\Python39-x64\python.exe" "C:\CraftMaster\CraftMaster\CraftMaster.py" --config "$env:APPVEYOR_BUILD_FOLDER\appveyor.ini" --variables "APPVEYOR_BUILD_FOLDER=$env:APPVEYOR_BUILD_FOLDER" --target $env:TARGET -c $args
+        if($LASTEXITCODE -ne 0) {exit 0}
+    }
 
 install:
 - ps: |
@@ -28,7 +33,7 @@ install:
 build_script:
 - ps: |
     craft --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client
-    craft --test --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client ; set LASTEXITCODE = 0
+    craftnofail --test --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client
     craft --package --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client
     cp C:\CraftMaster\windows-msvc2019_64-cl\tmp\*.7z $env:APPVEYOR_BUILD_FOLDER
     cp C:\CraftMaster\windows-msvc2019_64-cl\tmp\*.exe $env:APPVEYOR_BUILD_FOLDER
