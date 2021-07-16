@@ -28,6 +28,7 @@ install:
 build_script:
 - ps: |
     craft --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client
+    craft --test --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client
     craft --package --src-dir $env:APPVEYOR_BUILD_FOLDER nextcloud-client
     cp C:\CraftMaster\windows-msvc2019_64-cl\tmp\*.7z $env:APPVEYOR_BUILD_FOLDER
     cp C:\CraftMaster\windows-msvc2019_64-cl\tmp\*.exe $env:APPVEYOR_BUILD_FOLDER
