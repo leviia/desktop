@@ -116,7 +116,7 @@ QString Theme::statusHeaderText(SyncResult::Status status) const
 
 bool Theme::isBranded() const
 {
-    return appNameGUI() != QStringLiteral("Nextcloud");
+    return false;
 }
 
 QString Theme::appNameGUI() const

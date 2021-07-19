@@ -18,6 +18,7 @@
 #include "wizard/owncloudwizard.h"
 #include "wizard/slideshow.h"
 #include "ui_welcomepage.h"
+#include "config.h"
 
 namespace OCC {
 
@@ -67,8 +68,8 @@ void WelcomePage::styleSlideShow()
 
     _ui->slideShow->addSlide(wizardNextcloudIconFileName, tr("Keep your data secure and under your control"));
     _ui->slideShow->addSlide(wizardFilesIconFileName, tr("Secure collaboration & file exchange"));
-    _ui->slideShow->addSlide(wizardGroupwareIconFileName, tr("Easy-to-use web mail, calendaring & contacts"));
-    _ui->slideShow->addSlide(wizardTalkIconFileName, tr("Screensharing, online meetings & web conferences"));
+    //_ui->slideShow->addSlide(wizardGroupwareIconFileName, tr("Easy-to-use web mail, calendaring & contacts"));
+    //_ui->slideShow->addSlide(wizardTalkIconFileName, tr("Screensharing, online meetings & web conferences"));
 
     const auto isDarkBackground = Theme::isDarkColor(backgroundColor);
     _ui->slideShowNextButton->setIcon(theme->uiThemeIcon(QString("control-next.svg"), isDarkBackground));
@@ -95,18 +96,13 @@ void WelcomePage::setupLoginButton()
 
 void WelcomePage::setupCreateAccountButton()
 {
-#ifdef WITH_WEBENGINE
+    const auto appName = Theme::instance()->appNameGUI();
+
+    _ui->createAccountButton->setText(tr("Get a %1 account").arg(appName));
     connect(_ui->createAccountButton, &QPushButton::clicked, this, [this](bool /*checked*/) {
         _ocWizard->setRegistration(true);
-        _nextPage = WizardCommon::Page_WebView;
-        _ocWizard->next();
+        Utility::openBrowser(QStringLiteral(APPLICATION_REGISTER_URL));
     });
-#else // WITH_WEBENGINE
-    connect(_ui->createAccountButton, &QPushButton::clicked, this, [this](bool /*checked*/) {
-        _ocWizard->setRegistration(true);
-        Utility::openBrowser(QStringLiteral("https://nextcloud.com/register"));
-    });
-#endif // WITH_WEBENGINE
 }
 
 void WelcomePage::setupHostYourOwnServerLabel()
@@ -114,6 +110,7 @@ void WelcomePage::setupHostYourOwnServerLabel()
     _ui->hostYourOwnServerLabel->setText(tr("Host your own server"));
     _ui->hostYourOwnServerLabel->setAlignment(Qt::AlignCenter);
     _ui->hostYourOwnServerLabel->setUrl(QUrl("https://docs.nextcloud.com/server/latest/admin_manual/installation/#installation"));
+    _ui->hostYourOwnServerLabel->setVisible(false);
 }
 
 int WelcomePage::nextId() const
