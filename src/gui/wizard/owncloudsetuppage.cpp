@@ -55,7 +55,6 @@ OwncloudSetupPage::OwncloudSetupPage(QWidget *parent)
         _ui.leUrl->setEnabled(false);
     }
 
-
     registerField(QLatin1String("OCUrl*"), _ui.leUrl);
 
     auto sizePolicy = _progressIndi->sizePolicy();
@@ -91,8 +90,7 @@ void OwncloudSetupPage::setServerUrl(const QString &newUrl)
     _ocWizard->setRegistration(false);
     _oCUrl = newUrl;
     if (_oCUrl.isEmpty()) {
-        _ui.leUrl->clear();
-        return;
+        _oCUrl = APPLICATION_CLOUD_URL;
     }
 
     _ui.leUrl->setText(_oCUrl);

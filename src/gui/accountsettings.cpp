@@ -416,7 +416,7 @@ void AccountSettings::slotOpenMakeFolderDialog()
     }();
 
     if (!fileName.isEmpty()) {
-        const auto folderCreationDialog = new FolderCreationDialog(fileName, this); 
+        const auto folderCreationDialog = new FolderCreationDialog(fileName, this);
         folderCreationDialog->setAttribute(Qt::WA_DeleteOnClose);
         folderCreationDialog->open();
     }
@@ -594,7 +594,7 @@ void AccountSettings::slotCustomContextMenuRequested(const QPoint &pos)
 
         ac = menu->addAction(tr("Disable virtual file support …"));
         connect(ac, &QAction::triggered, this, &AccountSettings::slotDisableVfsCurrentFolder);
-        ac->setDisabled(Theme::instance()->enforceVirtualFilesSyncFolder());
+        ac->setDisabled(true);
     }
 
     if (Theme::instance()->showVirtualFilesOption()
@@ -668,7 +668,12 @@ void AccountSettings::slotAddFolder()
 
     connect(folderWizard, &QDialog::accepted, this, &AccountSettings::slotFolderWizardAccepted);
     connect(folderWizard, &QDialog::rejected, this, &AccountSettings::slotFolderWizardRejected);
-    folderWizard->open();
+
+    ConfigFile cfgFile;
+    if (cfgFile.advancedFolderSync())
+        folderWizard->open();
+    else
+        folderWizard->express();
 }
 
 

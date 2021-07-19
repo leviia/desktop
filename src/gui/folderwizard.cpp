@@ -514,6 +514,12 @@ void FolderWizardRemotePath::initializePage()
     slotRefreshFolders();
 }
 
+void FolderWizardRemotePath::selectRoot()
+{
+    _ui.folderEntry->setText("/");
+    slotFolderEntryEdited(_ui.folderEntry->text());
+}
+
 void FolderWizardRemotePath::showWarn(const QString &msg) const
 {
     if (msg.isEmpty()) {
@@ -611,6 +617,11 @@ void FolderWizardSelectiveSync::cleanupPage()
     QWizardPage::cleanupPage();
 }
 
+void FolderWizardSelectiveSync::checkVFS()
+{
+    _virtualFilesCheckBox->setChecked(true);
+}
+
 void FolderWizardSelectiveSync::virtualFilesCheckboxClicked()
 {
     // The click has already had an effect on the box, so if it's
@@ -675,6 +686,20 @@ void FolderWizard::resizeEvent(QResizeEvent *event)
             setTitleFormat(titleFormat()); // And another workaround for QTBUG-3396
         }
     }
+}
+
+void FolderWizard::express()
+{
+    open();
+    next();
+    if (_folderWizardTargetPage)
+    {
+        _folderWizardTargetPage->selectRoot();
+        next();
+    }
+    _folderWizardSelectiveSyncPage->checkVFS();
+    next();
+    accept();
 }
 
 } // end namespace

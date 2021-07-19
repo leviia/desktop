@@ -155,6 +155,9 @@ public:
     bool showCallNotifications() const;
     void setShowCallNotifications(bool show);
 
+    bool advancedFolderSync() const;
+    void setAdvancedFolderSync(bool enabled);
+
     bool showInExplorerNavigationPane() const;
     void setShowInExplorerNavigationPane(bool show);
 
