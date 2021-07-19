@@ -229,7 +229,7 @@ QVariant FolderStatusModel::data(const QModelIndex &index, int role) const
             ? QStringList(tr("There are unresolved conflicts. Click for details."))
             : QStringList();
     case FolderStatusDelegate::FolderErrorMsg:
-        return f->syncResult().errorStrings();
+        return QStringList();
     case FolderStatusDelegate::FolderInfoMsg:
         return f->virtualFilesEnabled() && f->vfs().mode() != Vfs::Mode::WindowsCfApi
             ? QStringList(tr("Virtual file support is enabled."))
