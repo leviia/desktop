@@ -4806,6 +4806,11 @@ This is a new, experimental mode. If you decide to use it, please report any iss
         <translation>Se connecter à %1</translation>
     </message>
     <message>
+        <location filename="../src/gui/wizard/welcomepage.cpp" line="98"/>
+        <source>Get a %1 account</source>
+        <translation>Obtenir un compte chez %1</translation>
+    </message>
+    <message>
         <location filename="../src/gui/wizard/welcomepage.ui" line="156"/>
         <source>Create account with Provider</source>
         <translation>Créer un compte avec un fournisseur</translation>
