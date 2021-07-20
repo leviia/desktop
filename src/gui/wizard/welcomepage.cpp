@@ -95,7 +95,9 @@ void WelcomePage::setupLoginButton()
 
 void WelcomePage::setupCreateAccountButton()
 {
-    _ui->createAccountButton->setText(tr("Get a Leviia account"));
+    const auto appName = Theme::instance()->appNameGUI();
+
+    _ui->createAccountButton->setText(tr("Get a %1 account").arg(appName));
     connect(_ui->createAccountButton, &QPushButton::clicked, this, [this](bool /*checked*/) {
         _ocWizard->setRegistration(true);
         Utility::openBrowser(QStringLiteral("https://leviia.com/"));
