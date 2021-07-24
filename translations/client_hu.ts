@@ -12,23 +12,23 @@
     <message>
         <location filename="../src/gui/tray/ActivityItem.qml" line="33"/>
         <source>Open %1 locally</source>
-        <translation type="unfinished"/>
+        <translation>%1 megnyitása helyben</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/ActivityItem.qml" line="163"/>
         <location filename="../src/gui/tray/ActivityItem.qml" line="166"/>
         <source>Show more actions</source>
-        <translation type="unfinished"/>
+        <translation>További műveletek megjelenítése</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/ActivityItem.qml" line="253"/>
         <source>Open share dialog</source>
-        <translation type="unfinished"/>
+        <translation>Megosztási párbeszédpanel megnyitása</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/ActivityItem.qml" line="257"/>
         <source>Share %1</source>
-        <translation type="unfinished"/>
+        <translation>%1 megosztása</translation>
     </message>
 </context>
 <context>
@@ -1065,7 +1065,7 @@ This can be an issue with your OpenSSL libraries.</source>
     <name>OCC::Flow2Auth</name>
     <message>
         <location filename="../src/gui/creds/flow2auth.cpp" line="104"/>
-        <source>The polling URL does not start with https despite the login URL started with https. Login will not be possible because this might be a security issue. Please contact your administrator.</source>
+        <source>The polling URL does not start with HTTPS despite the login URL started with HTTPS. Login will not be possible because this might be a security issue. Please contact your administrator.</source>
         <translation type="unfinished"/>
     </message>
     <message>
@@ -1094,7 +1094,7 @@ This can be an issue with your OpenSSL libraries.</source>
     </message>
     <message>
         <location filename="../src/gui/creds/flow2auth.cpp" line="211"/>
-        <source>The returned server URL does not start with https despite the login URL started with https. Login will not be possible because this might be a security issue. Please contact your administrator.</source>
+        <source>The returned server URL does not start with HTTPS despite the login URL started with HTTPS. Login will not be possible because this might be a security issue. Please contact your administrator.</source>
         <translation type="unfinished"/>
     </message>
 </context>
