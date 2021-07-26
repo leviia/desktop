@@ -90,7 +90,7 @@ void OwncloudSetupPage::setServerUrl(const QString &newUrl)
     _ocWizard->setRegistration(false);
     _oCUrl = newUrl;
     if (_oCUrl.isEmpty()) {
-        _oCUrl = "https://cloud.leviia.com";
+        _oCUrl = APPLICATION_CLOUD_URL;
     }
 
     _ui.leUrl->setText(_oCUrl);
