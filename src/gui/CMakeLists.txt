@@ -253,10 +253,6 @@ function(generate_sized_png_from_svg icon_path size)
   get_filename_component(icon_name_dir ${icon_path} DIRECTORY)
   get_filename_component(icon_name_wle ${icon_path} NAME_WLE)
 
-  if (EXISTS "${icon_name_dir}/${size}-${icon_name_wle}.png")
-    return()
-  endif()
-
   set(icon_output_name "${size}-${icon_name_wle}.png")
   message(STATUS "Generate ${icon_output_name}")
   execute_process(COMMAND
@@ -388,7 +384,7 @@ generate_sized_png_from_svg(${APP_ICON_SVG} 1024)
 list(APPEND V2_SVG_LIST
 "${theme_dir}/colored/state-offline.svg"
 )
-foreach(V2_SVG IN LISTS ${V2_SVG_LIST})
+foreach(V2_SVG IN LISTS V2_SVG_LIST)
 generate_sized_png_from_svg_v2(${V2_SVG} 16)
 generate_sized_png_from_svg_v2(${V2_SVG} 32)
 generate_sized_png_from_svg_v2(${V2_SVG} 64)
@@ -405,7 +401,7 @@ list(APPEND X_SVG_LIST
 "${theme_dir}/colored/wizard-nextcloud.svg"
 "${theme_dir}/colored/wizard-talk.svg"
 )
-foreach(X_SVG IN LISTS ${X_SVG_LIST})
+foreach(X_SVG IN LISTS X_SVG_LIST)
 generate_sized_png_from_svg_at_x(${X_SVG} 100 100 1)
 generate_sized_png_from_svg_at_x(${X_SVG} 100 100 2)
 endforeach()
