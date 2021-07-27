@@ -7,3 +7,4 @@ set( APPLICATION_HELP_URL       "https://www.iledefrance.fr/wiki" CACHE STRING "
 set( APPLICATION_REGISTER_URL   "https://www.iledefrance.fr/admin" CACHE STRING "URL to register" )
 set( APPLICATION_CLOUD_URL      "https://www.iledefrance.fr/cloud" CACHE STRING "URL to your cloud" )
 set( APPLICATION_REV_DOMAIN     "fr.iledefrance.desktopclient" )
+set( NEXTCLOUD_BACKGROUND_COLOR "#cc3216" CACHE STRING "Default Nextcloud background color")
