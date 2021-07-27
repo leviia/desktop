@@ -397,13 +397,13 @@ generate_sized_png_from_svg_v2(${V2_SVG} 256)
 endforeach()
 
 list(APPEND X_SVG_LIST
-#"${theme_dir}/colored/external.svg"
-#"${theme_dir}/colored/folder.svg"
+"${theme_dir}/colored/external.svg"
+"${theme_dir}/colored/folder.svg"
 "${theme_dir}/colored/wizard_logo.svg"
-#"${theme_dir}/colored/wizard-files.svg"
-#"${theme_dir}/colored/wizard-groupware.svg"
+"${theme_dir}/colored/wizard-files.svg"
+"${theme_dir}/colored/wizard-groupware.svg"
 "${theme_dir}/colored/wizard-nextcloud.svg"
-#"${theme_dir}/colored/wizard-talk.svg"
+"${theme_dir}/colored/wizard-talk.svg"
 )
 foreach(X_SVG IN LISTS ${X_SVG_LIST})
 generate_sized_png_from_svg_at_x(${X_SVG} 100 100 1)
