@@ -45,7 +45,7 @@ configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/wizard_logo.svg $
 configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/wizard-nextcloud.svg ${CMAKE_SOURCE_DIR}/theme/colored/wizard-nextcloud.svg)
 
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/external.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/external.svg)
-configure_file(${CMAKE_SOURCE_DIR}/theme/colored/wizard-nextcloud.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/wizard-nextcloud.svg)
+configure_file(${CMAKE_SOURCE_DIR}/theme/colored/folder.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/folder.svg)
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/wizard-files.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/wizard-files.svg)
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/wizard-groupware.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/wizard-groupware.svg)
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/wizard-talk.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/wizard-talk.svg)
