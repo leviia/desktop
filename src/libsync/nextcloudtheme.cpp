@@ -35,7 +35,7 @@ NextcloudTheme::NextcloudTheme()
 
 QString NextcloudTheme::wizardUrlHint() const
 {
-    return QString("https://cloud.leviia.com");
+    return QString(APPLICATION_CLOUD_URL);
 }
 
 }

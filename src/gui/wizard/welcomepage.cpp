@@ -18,6 +18,7 @@
 #include "wizard/owncloudwizard.h"
 #include "wizard/slideshow.h"
 #include "ui_welcomepage.h"
+#include "config.h"
 
 namespace OCC {
 
@@ -100,7 +101,7 @@ void WelcomePage::setupCreateAccountButton()
     _ui->createAccountButton->setText(tr("Get a %1 account").arg(appName));
     connect(_ui->createAccountButton, &QPushButton::clicked, this, [this](bool /*checked*/) {
         _ocWizard->setRegistration(true);
-        Utility::openBrowser(QStringLiteral("https://leviia.com/"));
+        Utility::openBrowser(QStringLiteral(APPLICATION_REGISTER_URL));
     });
 }
 
