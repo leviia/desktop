@@ -3,21 +3,21 @@ set( APPLICATION_SHORTNAME      "Leviia" )
 set( APPLICATION_EXECUTABLE     "leviia" )
 set( APPLICATION_DOMAIN         "leviia.com" )
 set( APPLICATION_VENDOR         "Leviia" )
-set( APPLICATION_UPDATE_URL     "https://leviia.com" CACHE STRING "URL for updater" )
-set( APPLICATION_HELP_URL       "https://wiki.leviia.com" CACHE STRING "URL for the help menu" )
-set( APPLICATION_REGISTER_URL   "https://leviia.com" CACHE STRING "URL to register" )
-set( APPLICATION_CLOUD_URL      "https://cloud.leviia.com" CACHE STRING "URL to your cloud" )
+set( APPLICATION_UPDATE_URL     "https://leviia.com" )
+set( APPLICATION_HELP_URL       "https://wiki.leviia.com" )
+set( APPLICATION_REGISTER_URL   "https://leviia.com" )
+set( APPLICATION_CLOUD_URL      "https://cloud.leviia.com" )
 set( APPLICATION_ICON_NAME      "Leviia" )
 set( APPLICATION_ICON_SET       "SVG" )
-set( APPLICATION_SERVER_URL     "" CACHE STRING "URL for the server to use. If entered, the UI field will be pre-filled with it" )
+set( APPLICATION_SERVER_URL     "" )
 set( APPLICATION_SERVER_URL_ENFORCE ON ) # If set and APPLICATION_SERVER_URL is defined, the server can only connect to the pre-defined URL
 set( APPLICATION_REV_DOMAIN     "com.leviia.desktopclient" )
-set( APPLICATION_VIRTUALFILE_SUFFIX "leviia" CACHE STRING "Virtual file suffix (not including the .)")
+set( APPLICATION_VIRTUALFILE_SUFFIX "leviia" )
 
 set( LINUX_PACKAGE_SHORTNAME "leviia" )
 set( LINUX_APPLICATION_ID "${APPLICATION_REV_DOMAIN}.${LINUX_PACKAGE_SHORTNAME}")
 
-set(NEXTCLOUD_BACKGROUND_COLOR "#00bc73" CACHE STRING "Default Nextcloud background color")
+set( NEXTCLOUD_BACKGROUND_COLOR "#00bc73" )
 
 message("Branding: ${BRANDING_VALUE}")
 string(COMPARE NOTEQUAL "${BRANDING_VALUE}" "" __cmp)
@@ -26,7 +26,7 @@ if(__cmp)
     include(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}.cmake)
     set( APPLICATION_ICON_NAME "${APPLICATION_SHORTNAME}" )
     set( APPLICATION_EXECUTABLE "${APPLICATION_SHORTNAME}" )
-    set( APPLICATION_VIRTUALFILE_SUFFIX "${APPLICATION_SHORTNAME}" CACHE STRING "Virtual file suffix (not including the .)")
+    set( APPLICATION_VIRTUALFILE_SUFFIX "${APPLICATION_SHORTNAME}" )
     set( LINUX_PACKAGE_SHORTNAME "${APPLICATION_SHORTNAME}" )
 
     configure_file(${CMAKE_SOURCE_DIR}/theme/leviia.VisualElementsManifest.xml.in ${CMAKE_SOURCE_DIR}/theme/${APPLICATION_EXECUTABLE}.VisualElementsManifest.xml)
@@ -44,6 +44,8 @@ configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/state-offline.svg
 configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/wizard_logo.svg ${CMAKE_SOURCE_DIR}/theme/colored/wizard_logo.svg)
 configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/wizard-nextcloud.svg ${CMAKE_SOURCE_DIR}/theme/colored/wizard-nextcloud.svg)
 
+message("NEXTCLOUD_BACKGROUND_COLOR")
+message("${NEXTCLOUD_BACKGROUND_COLOR}")
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/external.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/external.svg)
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/folder.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/folder.svg)
 configure_file(${CMAKE_SOURCE_DIR}/theme/colored/wizard-files.svg.in ${CMAKE_SOURCE_DIR}/theme/colored/wizard-files.svg)
@@ -69,8 +71,8 @@ option( WITH_PROVIDERS "Build with providers list" ON )
 
 
 ## Theming options
-set( APPLICATION_WIZARD_HEADER_BACKGROUND_COLOR ${NEXTCLOUD_BACKGROUND_COLOR} CACHE STRING "Hex color of the wizard header background")
-set( APPLICATION_WIZARD_HEADER_TITLE_COLOR "#ffffff" CACHE STRING "Hex color of the text in the wizard header")
+set( APPLICATION_WIZARD_HEADER_BACKGROUND_COLOR ${NEXTCLOUD_BACKGROUND_COLOR} )
+set( APPLICATION_WIZARD_HEADER_TITLE_COLOR "#ffffff" )
 option( APPLICATION_WIZARD_USE_CUSTOM_LOGO "Use the logo from ':/client/theme/colored/wizard_logo.(png|svg)' else the default application icon is used" ON )
 
 
