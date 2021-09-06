@@ -22,13 +22,12 @@
 #include "common/utility.h"
 #include "filesystem.h"
 #include "propagatorjobs.h"
-#include "common/checksums.h"
-#include "common/asserts.h"
+#include <common/checksums.h>
+#include <common/asserts.h>
+#include <common/constants.h>
 #include "clientsideencryptionjobs.h"
 #include "propagatedownloadencrypted.h"
 #include "common/vfs.h"
-
-#include "configfile.h"
 
 #include <QLoggingCategory>
 #include <QNetworkAccessManager>
@@ -39,11 +38,6 @@
 #ifdef Q_OS_UNIX
 #include <unistd.h>
 #endif
-
-namespace {
-    constexpr quint16 numChecksumFailuresAllowed = 1;
-    constexpr char *checksumFailureDbRecordPrefix = "ChecksumValidationFailed_";
-}
 
 namespace OCC {
 
@@ -100,7 +94,6 @@ GETFileJob::GETFileJob(AccountPtr account, const QUrl &url, QIODevice *device,
     const QMap<QByteArray, QByteArray> &headers, const QByteArray &expectedEtagForResume,
     qint64 resumeStart, QObject *parent)
     : AbstractNetworkJob(account, url.toEncoded(), parent)
-    , _device(device)
     , _headers(headers)
     , _expectedEtagForResume(expectedEtagForResume)
     , _expectedContentLength(-1)
@@ -114,6 +107,7 @@ GETFileJob::GETFileJob(AccountPtr account, const QUrl &url, QIODevice *device,
     , _bandwidthManager(nullptr)
     , _hasEmittedFinishedSignal(false)
     , _lastModified()
+    , _device(device)
 {
 }
 
@@ -291,6 +285,11 @@ qint64 GETFileJob::currentDownloadPosition()
     return _resumeStart;
 }
 
+qint64 GETFileJob::writeToDevice(const QByteArray &data)
+{
+    return _device->write(data);
+}
+
 void GETFileJob::slotReadyRead()
 {
     if (!reply())
@@ -313,8 +312,8 @@ void GETFileJob::slotReadyRead()
             _bandwidthQuota -= toRead;
         }
 
-        qint64 r = reply()->read(buffer.data(), toRead);
-        if (r < 0) {
+        const qint64 readBytes = reply()->read(buffer.data(), toRead);
+        if (readBytes < 0) {
             _errorString = networkReplyErrorString(*reply());
             _errorStatus = SyncFileItem::NormalError;
             qCWarning(lcGetJob) << "Error while reading from device: " << _errorString;
@@ -322,11 +321,11 @@ void GETFileJob::slotReadyRead()
             return;
         }
 
-        qint64 w = _device->write(buffer.constData(), r);
-        if (w != r) {
+        const qint64 writtenBytes = writeToDevice(QByteArray::fromRawData(buffer.constData(), readBytes));
+        if (writtenBytes != readBytes) {
             _errorString = _device->errorString();
             _errorStatus = SyncFileItem::NormalError;
-            qCWarning(lcGetJob) << "Error while writing to file" << w << r << _errorString;
+            qCWarning(lcGetJob) << "Error while writing to file" << writtenBytes << readBytes << _errorString;
             reply()->abort();
             return;
         }
@@ -376,6 +375,75 @@ QString GETFileJob::errorString() const
         return _errorString;
     }
     return AbstractNetworkJob::errorString();
+}
+
+GETEncryptedFileJob::GETEncryptedFileJob(AccountPtr account, const QString &path, QIODevice *device,
+    const QMap<QByteArray, QByteArray> &headers, const QByteArray &expectedEtagForResume,
+    qint64 resumeStart, EncryptedFile encryptedInfo, QObject *parent)
+    : GETFileJob(account, path, device, headers, expectedEtagForResume, resumeStart, parent)
+    , _encryptedFileInfo(encryptedInfo)
+{
+}
+
+GETEncryptedFileJob::GETEncryptedFileJob(AccountPtr account, const QUrl &url, QIODevice *device,
+    const QMap<QByteArray, QByteArray> &headers, const QByteArray &expectedEtagForResume,
+    qint64 resumeStart, EncryptedFile encryptedInfo, QObject *parent)
+    : GETFileJob(account, url, device, headers, expectedEtagForResume, resumeStart, parent)
+    , _encryptedFileInfo(encryptedInfo)
+{
+}
+
+qint64 GETEncryptedFileJob::writeToDevice(const QByteArray &data)
+{
+    if (!_decryptor) {
+        // only initialize the decryptor once, because, according to Qt documentation, metadata might get changed during the processing of the data sometimes
+        // https://doc.qt.io/qt-5/qnetworkreply.html#metaDataChanged
+        _decryptor.reset(new EncryptionHelper::StreamingDecryptor(_encryptedFileInfo.encryptionKey, _encryptedFileInfo.initializationVector, _contentLength));
+    }
+
+    if (!_decryptor->isInitialized()) {
+        return -1;
+    }
+
+    const auto bytesRemaining = _contentLength - _processedSoFar - data.length();
+
+    if (bytesRemaining != 0 && bytesRemaining < OCC::Constants::e2EeTagSize) {
+        // decryption is going to fail if last chunk does not include or does not equal to OCC::Constants::e2EeTagSize bytes tag
+        // we may end up receiving packets beyond OCC::Constants::e2EeTagSize bytes tag at the end
+        // in that case, we don't want to try and decrypt less than OCC::Constants::e2EeTagSize ending bytes of tag, we will accumulate all the incoming data till the end
+        // and then, we are going to decrypt the entire chunk containing OCC::Constants::e2EeTagSize bytes at the end
+        _pendingBytes += QByteArray(data.constData(), data.length());
+        _processedSoFar += data.length();
+        if (_processedSoFar != _contentLength) {
+            return data.length();
+        }
+    }
+
+    if (!_pendingBytes.isEmpty()) {
+        const auto decryptedChunk = _decryptor->chunkDecryption(_pendingBytes.constData(), _pendingBytes.size());
+
+        if (decryptedChunk.isEmpty()) {
+            qCCritical(lcPropagateDownload) << "Decryption failed!";
+            return -1;
+        }
+
+        GETFileJob::writeToDevice(decryptedChunk);
+
+        return data.length();
+    }
+
+    const auto decryptedChunk = _decryptor->chunkDecryption(data.constData(), data.length());
+
+    if (decryptedChunk.isEmpty()) {
+        qCCritical(lcPropagateDownload) << "Decryption failed!";
+        return -1;
+    }
+
+    GETFileJob::writeToDevice(decryptedChunk);
+
+    _processedSoFar += data.length();
+
+    return data.length();
 }
 
 void PropagateDownloadFile::start()
@@ -455,6 +523,11 @@ void PropagateDownloadFile::startAfterIsEncryptedIsChecked()
         }
 
         qCDebug(lcPropagateDownload) << "creating virtual file" << _item->_file;
+        // do a klaas' case clash check.
+        if (propagator()->localFileNameClash(_item->_file)) {
+            done(SyncFileItem::NormalError, tr("File %1 can not be downloaded because of a local file name clash!").arg(QDir::toNativeSeparators(_item->_file)));
+            return;
+        }
         auto r = vfs->createPlaceholder(*_item);
         if (!r) {
             done(SyncFileItem::NormalError, r.error());
@@ -830,38 +903,8 @@ void PropagateDownloadFile::slotGetFinished()
     validator->start(_tmpFile.fileName(), checksumHeader);
 }
 
-void PropagateDownloadFile::slotChecksumFail(const QString &errMsg, const QByteArray &checksumType, const QByteArray &checksum, const QString &filePath)
-{
-    if (!checksumType.isEmpty() && !checksum.isEmpty() && !filePath.isEmpty()) {
-        ConfigFile cfgFile;
-
-        if (cfgFile.allowChecksumValidationFail()) {
-            const auto key = QString(checksumFailureDbRecordPrefix + _item->_fileId);
-            const QStringList mismatchEntryForFileSplitted = propagator()->_journal->keyValueStoreGet(key).toString().split(":", QString::SkipEmptyParts);
-            const QByteArray mismatchChecksumForFile = mismatchEntryForFileSplitted.size() > 0 ? mismatchEntryForFileSplitted[0].toUtf8() : QByteArray();
-            const auto numChecksumMismatchCases = mismatchEntryForFileSplitted.size() > 1 ? mismatchEntryForFileSplitted[1].toInt() : 0;
-
-            // format must be CHECKSUM:COUNT
-            Q_ASSERT(mismatchEntryForFileSplitted.size() != 1);
-            if (mismatchEntryForFileSplitted.size() == 1) {
-                qCCritical(lcPropagateDownload) << "mismatchEntryForFile has incorrect format. Should be CHECKSUM:COUNT";
-            }
-
-            if (numChecksumMismatchCases < numChecksumFailuresAllowed || mismatchChecksumForFile != checksum) {
-                // not enough failures or different checksum this time
-                qCInfo(lcPropagateDownload) << "Checksum validation has failed" << numChecksumMismatchCases << " times, with previous checksum<" << mismatchChecksumForFile << "> and, current checksum<" << checksum << ">, but, allowChecksumValidationFail is set.Let's give it another try...";
-                const auto numCasesToSet = mismatchChecksumForFile != checksum ? 1 : numChecksumMismatchCases + 1;
-                const QString value = QString::fromUtf8(checksum) + QStringLiteral(":") + QString::number(numCasesToSet);
-                propagator()->_journal->keyValueStoreSet(key, value);
-            } else {
-                propagator()->_journal->keyValueStoreDelete(key);
-                qCInfo(lcPropagateDownload) << "Checksum validation has failed" << numChecksumMismatchCases << " times, but, allowChecksumValidationFail is set, so, let's continue...";
-                startContentChecksumCompute(checksumType, filePath);
-                return;
-            }
-        }
-    }
-    
+void PropagateDownloadFile::slotChecksumFail(const QString &errMsg)
+{ 
     FileSystem::remove(_tmpFile.fileName());
     propagator()->_anotherSyncNeeded = true;
     done(SyncFileItem::SoftError, errMsg); // tr("The file downloaded with a broken checksum, will be redownloaded."));
@@ -887,18 +930,6 @@ void PropagateDownloadFile::deleteExistingFolder()
     if (!propagator()->createConflict(_item, _associatedComposite, &error)) {
         done(SyncFileItem::NormalError, error);
     }
-}
-
-void PropagateDownloadFile::startContentChecksumCompute(const QByteArray &checksumType, const QString &path)
-{
-    qCInfo(lcPropagateDownload) << "Start checksum compute with checksumType:" << checksumType << " for path:" << path;
-    // Compute the content checksum.
-    const auto computeChecksum = new ComputeChecksum(this);
-    computeChecksum->setChecksumType(checksumType);
-
-    connect(computeChecksum, &ComputeChecksum::done,
-        this, &PropagateDownloadFile::contentChecksumComputed);
-    computeChecksum->start(path);
 }
 
 namespace { // Anonymous namespace for the recall feature
@@ -989,9 +1020,13 @@ void PropagateDownloadFile::transmissionChecksumValidated(const QByteArray &chec
         return contentChecksumComputed(checksumType, checksum);
     }
 
-    startContentChecksumCompute(theContentChecksumType, _tmpFile.fileName());
+    // Compute the content checksum.
+    auto computeChecksum = new ComputeChecksum(this);
+    computeChecksum->setChecksumType(theContentChecksumType);
 
-    propagator()->_journal->keyValueStoreDelete(QString(checksumFailureDbRecordPrefix + _item->_fileId));
+    connect(computeChecksum, &ComputeChecksum::done,
+        this, &PropagateDownloadFile::contentChecksumComputed);
+    computeChecksum->start(_tmpFile.fileName());
 }
 
 void PropagateDownloadFile::contentChecksumComputed(const QByteArray &checksumType, const QByteArray &checksum)
@@ -1119,15 +1154,21 @@ void PropagateDownloadFile::downloadFinished()
             // Move the pin state to the new location
             auto pin = propagator()->_journal->internalPinStates().rawForPath(virtualFile.toUtf8());
             if (pin && *pin != PinState::Inherited) {
-                vfs->setPinState(_item->_file, *pin);
-                vfs->setPinState(virtualFile, PinState::Inherited);
+                if (!vfs->setPinState(_item->_file, *pin)) {
+                    qCWarning(lcPropagateDownload) << "Could not set pin state of" << _item->_file;
+                }
+                if (!vfs->setPinState(virtualFile, PinState::Inherited)) {
+                    qCWarning(lcPropagateDownload) << "Could not set pin state of" << virtualFile << " to inherited";
+                }
             }
         }
 
         // Ensure the pin state isn't contradictory
         auto pin = vfs->pinState(_item->_file);
         if (pin && *pin == PinState::OnlineOnly)
-            vfs->setPinState(_item->_file, PinState::Unspecified);
+            if (!vfs->setPinState(_item->_file, PinState::Unspecified)) {
+                qCWarning(lcPropagateDownload) << "Could not set pin state of" << _item->_file << "to unspecified";
+            }
     }
 
     updateMetadata(isConflict);

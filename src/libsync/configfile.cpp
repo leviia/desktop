@@ -50,7 +50,6 @@
 #define DEFAULT_MAX_LOG_LINES 20000
 
 namespace {
-static constexpr char allowChecksumValidationFailC[] = "allowChecksumValidationFail";
 static constexpr char showMainDialogAsNormalWindowC[] = "showMainDialogAsNormalWindow";
 }
 
@@ -229,7 +228,7 @@ qint64 ConfigFile::chunkSize() const
 qint64 ConfigFile::maxChunkSize() const
 {
     QSettings settings(configFile(), QSettings::IniFormat);
-    return settings.value(QLatin1String(maxChunkSizeC), 100 * 1000 * 1000).toLongLong(); // default to 100 MB
+    return settings.value(QLatin1String(maxChunkSizeC), 1000 * 1000 * 1000).toLongLong(); // default to 1000 MB
 }
 
 qint64 ConfigFile::minChunkSize() const
@@ -890,11 +889,6 @@ bool ConfigFile::moveToTrash() const
 void ConfigFile::setMoveToTrash(bool isChecked)
 {
     setValue(moveToTrashC, isChecked);
-}
-
-bool ConfigFile::allowChecksumValidationFail() const
-{
-    return getValue(allowChecksumValidationFailC, {}, false).toBool();
 }
 
 bool ConfigFile::showMainDialogAsNormalWindow() const {

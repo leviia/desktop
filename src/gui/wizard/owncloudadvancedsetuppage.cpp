@@ -57,7 +57,7 @@ OwncloudAdvancedSetupPage::OwncloudAdvancedSetupPage(OwncloudWizard *wizard)
     setupCustomization();
 
     connect(_ui.pbSelectLocalFolder, &QAbstractButton::clicked, this, &OwncloudAdvancedSetupPage::slotSelectFolder);
-    setButtonText(QWizard::NextButton, tr("Connect"));
+    setButtonText(QWizard::FinishButton, tr("Connect"));
 
     connect(_ui.rSyncEverything, &QAbstractButton::clicked, this, &OwncloudAdvancedSetupPage::slotSyncEverythingClicked);
     connect(_ui.rSelectiveSync, &QAbstractButton::clicked, this, &OwncloudAdvancedSetupPage::slotSelectiveSyncClicked);
@@ -134,8 +134,8 @@ void OwncloudAdvancedSetupPage::initializePage()
     }
 
     _checking = false;
-    _ui.lSelectiveSyncSizeLabel->setText(QString());
-    _ui.lSyncEverythingSizeLabel->setText(QString());
+    _ui.lSelectiveSyncSizeLabel->clear();
+    _ui.lSyncEverythingSizeLabel->clear();
 
     // Update the local folder - this is not guaranteed to find a good one
     QString goodLocalFolder = FolderMan::instance()->findGoodPathForNewSyncFolder(localFolder(), serverUrl());
@@ -145,7 +145,7 @@ void OwncloudAdvancedSetupPage::initializePage()
     updateStatus();
 
     // ensure "next" gets the focus, not obSelectLocalFolder
-    QTimer::singleShot(0, wizard()->button(QWizard::NextButton), SLOT(setFocus()));
+    QTimer::singleShot(0, wizard()->button(QWizard::FinishButton), qOverload<>(&QWidget::setFocus));
 
     auto acc = static_cast<OwncloudWizard *>(wizard())->account();
     auto quotaJob = new PropfindJob(acc, _remoteFolder, this);
@@ -168,7 +168,7 @@ void OwncloudAdvancedSetupPage::initializePage()
     _ui.confCheckBoxExternal->setChecked(cfgFile.confirmExternalStorage());
 
     fetchUserAvatar();
-    fetchUserData();
+    setUserInformation();
 
     customizeStyle();
 
@@ -201,20 +201,9 @@ void OwncloudAdvancedSetupPage::fetchUserAvatar()
     avatarJob->start();
 }
 
-void OwncloudAdvancedSetupPage::fetchUserData()
+void OwncloudAdvancedSetupPage::setUserInformation()
 {
     const auto account = _ocWizard->account();
-
-    // Fetch user data
-    const auto userJob = new JsonApiJob(account, QLatin1String("ocs/v1.php/cloud/user"), this);
-    userJob->setTimeout(20 * 1000);
-    connect(userJob, &JsonApiJob::jsonReceived, this, [this](const QJsonDocument &json) {
-        const auto objData = json.object().value("ocs").toObject().value("data").toObject();
-        const auto displayName = objData.value("display-name").toString();
-        _ui.userNameLabel->setText(displayName);
-    });
-    userJob->start();
-
     const auto serverUrl = account->url().toString();
     setServerAddressLabelUrl(serverUrl);
     const auto userName = account->davDisplayName();
@@ -267,10 +256,10 @@ void OwncloudAdvancedSetupPage::updateStatus()
         if (_remoteFolder.isEmpty() || _remoteFolder == QLatin1String("/")) {
             t = "";
         } else {
-            t = Utility::escape(tr("%1 folder '%2' is synced to local folder '%3'")
+            t = Utility::escape(tr(R"(%1 folder "%2" is synced to local folder "%3")")
                                     .arg(Theme::instance()->appName(), _remoteFolder,
                                         QDir::toNativeSeparators(locFolder)));
-            _ui.rSyncEverything->setText(tr("Sync the folder '%1'").arg(_remoteFolder));
+            _ui.rSyncEverything->setText(tr("Sync the folder \"%1\"").arg(_remoteFolder));
         }
 
         const bool dirNotEmpty(QDir(locFolder).entryList(QDir::AllEntries | QDir::NoDotAndDotDot).count() > 0);
@@ -338,7 +327,8 @@ QUrl OwncloudAdvancedSetupPage::serverUrl() const
 
 int OwncloudAdvancedSetupPage::nextId() const
 {
-    return WizardCommon::Page_Result;
+    // tells the caller that this is the last dialog page
+    return -1;
 }
 
 QString OwncloudAdvancedSetupPage::localFolder() const

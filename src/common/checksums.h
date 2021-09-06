@@ -81,7 +81,7 @@ class OCSYNC_EXPORT ComputeChecksum : public QObject
     Q_OBJECT
 public:
     explicit ComputeChecksum(QObject *parent = nullptr);
-    ~ComputeChecksum();
+    ~ComputeChecksum() override;
 
     /**
      * Sets the checksum type to be used. The default is empty.
@@ -163,7 +163,7 @@ public:
 
 signals:
     void validated(const QByteArray &checksumType, const QByteArray &checksum);
-    void validationFailed(const QString &errMsg, const QByteArray &checksumType, const QByteArray &checksum, const QString &filePath);
+    void validationFailed(const QString &errMsg);
 
 private slots:
     void slotChecksumCalculated(const QByteArray &checksumType, const QByteArray &checksum);
@@ -173,8 +173,6 @@ private:
 
     QByteArray _expectedChecksumType;
     QByteArray _expectedChecksum;
-
-    QString _filePath;
 };
 
 /**

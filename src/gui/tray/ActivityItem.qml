@@ -11,10 +11,8 @@ MouseArea {
     hoverEnabled: true
     
     Rectangle {
-        anchors.left: activityMouseArea.left
+        anchors.fill: parent
         anchors.margins: 2
-        width: Style.trayWindowMouseAreaWidth
-        height: Style.trayWindowHeaderHeight
         color: (parent.containsMouse ? Style.lightHover : "transparent")
     }
         
@@ -170,7 +168,7 @@ MouseArea {
                 
                 Connections {
                     target: trayWindow
-                    onActiveChanged: {
+                    function onActiveChanged() {
                         if (!trayWindow.active) {
                             moreActionsButtonContextMenu.close();
                         }
@@ -180,7 +178,7 @@ MouseArea {
                 Connections {
                     target: activityListView
                     
-                    onMovementStarted: {
+                    function onMovementStarted() {
                         moreActionsButtonContextMenu.close();
                     }
                 }

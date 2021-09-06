@@ -72,7 +72,7 @@ public:
     /* returns a singleton instance. */
     static Theme *instance();
 
-    ~Theme();
+    ~Theme() override;
 
     /**
      * @brief isBranded indicates if the current application is branded
@@ -338,15 +338,6 @@ public:
     virtual bool wizardHideExternalStorageConfirmationCheckbox() const;
 
     /**
-     * Alternative path on the server that provides access to the webdav capabilities
-     *
-     * Attention: Make sure that this string does NOT have a leading slash and that
-     * it has a trailing slash, for example "remote.php/dav/".
-     */
-    virtual QString webDavPath() const;
-    virtual QString webDavPathNonShib() const;
-
-    /**
      * @brief Sharing options
      *
      * Allow link sharing and or user/group sharing
@@ -543,6 +534,8 @@ public:
      * manually enabled in the configuration file.
      */
     virtual bool showVirtualFilesOption() const;
+
+    static constexpr const char *themePrefix = ":/client/theme/";
 
 protected:
 #ifndef TOKEN_AUTH_ONLY

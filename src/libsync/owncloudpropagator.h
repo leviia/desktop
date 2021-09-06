@@ -183,8 +183,8 @@ private:
 public:
     PropagateItemJob(OwncloudPropagator *propagator, const SyncFileItemPtr &item)
         : PropagatorJob(propagator)
-        , _item(item)
         , _parallelism(FullParallelism)
+        , _item(item)
     {
         // we should always execute jobs that process the E2EE API calls as sequential jobs
         // TODO: In fact, we must make sure Lock/Unlock are not colliding and always wait for each other to complete. So, we could refactor this "_parallelism" later
@@ -192,7 +192,7 @@ public:
         // As an alternative, we could optimize Lock/Unlock calls, so we do a batch-write on one folder and only lock and unlock a folder once per batch.
         _parallelism = (_item->_isEncrypted || hasEncryptedAncestor()) ? WaitForFinished : FullParallelism;
     }
-    ~PropagateItemJob();
+    ~PropagateItemJob() override;
 
     bool scheduleSelfOrChild() override
     {
@@ -206,7 +206,7 @@ public:
         return true;
     }
 
-    virtual JobParallelism parallelism() override { return _parallelism; }
+    JobParallelism parallelism() override { return _parallelism; }
 
     SyncFileItemPtr _item;
 
@@ -237,7 +237,7 @@ public:
     // Don't delete jobs in _jobsToDo and _runningJobs: they have parents
     // that will be responsible for cleanup. Deleting them here would risk
     // deleting something that has already been deleted by a shared parent.
-    virtual ~PropagatorCompositeJob() = default;
+    ~PropagatorCompositeJob() override = default;
 
     void appendJob(PropagatorJob *job);
     void appendTask(const SyncFileItemPtr &item)
@@ -407,21 +407,21 @@ public:
 public:
     OwncloudPropagator(AccountPtr account, const QString &localDir,
         const QString &remoteFolder, SyncJournalDb *progressDb)
-        : _localDir((localDir.endsWith(QChar('/'))) ? localDir : localDir + '/')
-        , _remoteFolder((remoteFolder.endsWith(QChar('/'))) ? remoteFolder : remoteFolder + '/')
-        , _journal(progressDb)
+        : _journal(progressDb)
         , _finishedEmited(false)
         , _bandwidthManager(this)
         , _anotherSyncNeeded(false)
         , _chunkSize(10 * 1000 * 1000) // 10 MB, overridden in setSyncOptions
         , _account(account)
+        , _localDir((localDir.endsWith(QChar('/'))) ? localDir : localDir + '/')
+        , _remoteFolder((remoteFolder.endsWith(QChar('/'))) ? remoteFolder : remoteFolder + '/')
     {
         qRegisterMetaType<PropagatorJob::AbortType>("PropagatorJob::AbortType");
     }
 
-    ~OwncloudPropagator();
+    ~OwncloudPropagator() override;
 
-    void start(const SyncFileItemVector &_syncedItems);
+    void start(SyncFileItemVector &&_syncedItems);
 
     const SyncOptions &syncOptions() const;
     void setSyncOptions(const SyncOptions &syncOptions);
@@ -646,7 +646,7 @@ public:
     {
     }
 
-    ~CleanupPollsJob();
+    ~CleanupPollsJob() override;
 
     /**
      * Start the job.  After the job is completed, it will emit either finished or aborted, and it

@@ -59,7 +59,7 @@ public:
         SharePermissions maxSharingPermissions,
         const QString &privateLinkUrl,
         QWidget *parent = nullptr);
-    ~ShareUserGroupWidget();
+    ~ShareUserGroupWidget() override;
 
 signals:
     void togglePublicLinkShare(bool);
@@ -128,7 +128,7 @@ public:
         SharePermissions maxSharingPermissions,
         bool isFile,
         QWidget *parent = nullptr);
-    ~ShareUserLine();
+    ~ShareUserLine() override;
 
     QSharedPointer<Share> share() const;
 
@@ -169,7 +169,11 @@ private slots:
 private:
     void displayPermissions();
     void loadAvatar();
+    void setDefaultAvatar(int avatarSize);
     void customizeStyle();
+
+    QPixmap pixmapForShareeType(Sharee::Type type, const QColor &backgroundColor = QColor()) const;
+    QColor backgroundColorForShareeType(Sharee::Type type) const;
 
   void showNoteOptions(bool show);
   void toggleNoteOptions(bool enable);
@@ -177,7 +181,7 @@ private:
   void setNote(const QString &note);
 
   void toggleExpireDateOptions(bool enable);
-  void showExpireDateOptions(bool show);
+  void showExpireDateOptions(bool show, const QDate &initialDate = QDate());
   void setExpireDate();
 
   void togglePasswordSetProgressAnimation(bool show);

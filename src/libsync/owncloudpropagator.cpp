@@ -40,6 +40,7 @@
 #include <QTimer>
 #include <QObject>
 #include <QTimerEvent>
+#include <QRegularExpression>
 #include <qmath.h>
 
 namespace OCC {
@@ -387,7 +388,7 @@ qint64 OwncloudPropagator::smallFileSize()
     return smallFileSize;
 }
 
-void OwncloudPropagator::start(const SyncFileItemVector &items)
+void OwncloudPropagator::start(SyncFileItemVector &&items)
 {
     Q_ASSERT(std::is_sorted(items.begin(), items.end()));
 
@@ -395,6 +396,26 @@ void OwncloudPropagator::start(const SyncFileItemVector &items)
      * Each directory is a PropagateDirectory job, which contains the files in it.
      * In order to do that we loop over the items. (which are sorted by destination)
      * When we enter a directory, we can create the directory job and push it on the stack. */
+
+    const auto regex = syncOptions().fileRegex();
+    if (regex.isValid()) {
+        QSet<QStringRef> names;
+        for (auto &i : items) {
+            if (regex.match(i->_file).hasMatch()) {
+                int index = -1;
+                QStringRef ref;
+                do {
+                    ref = i->_file.midRef(0, index);
+                    names.insert(ref);
+                    index = ref.lastIndexOf(QLatin1Char('/'));
+                } while (index > 0);
+            }
+        }
+        items.erase(std::remove_if(items.begin(), items.end(), [&names](auto i) {
+            return !names.contains(QStringRef { &i->_file });
+        }),
+            items.end());
+    }
 
     _rootJob.reset(new PropagateRootDirectory(this));
     QStack<QPair<QString /* directory name */, PropagateDirectory * /* job */>> directories;
@@ -527,24 +548,24 @@ void OwncloudPropagator::setSyncOptions(const SyncOptions &syncOptions)
 
 bool OwncloudPropagator::localFileNameClash(const QString &relFile)
 {
-    bool re = false;
     const QString file(_localDir + relFile);
+    Q_ASSERT(!file.isEmpty());
 
     if (!file.isEmpty() && Utility::fsCasePreserving()) {
+        qCDebug(lcPropagator) << "CaseClashCheck for " << file;
 #ifdef Q_OS_MAC
-        QFileInfo fileInfo(file);
+        const QFileInfo fileInfo(file);
         if (!fileInfo.exists()) {
-            re = false;
-            qCWarning(lcPropagator) << "No valid fileinfo";
+            return false;
         } else {
             // Need to normalize to composited form because of QTBUG-39622/QTBUG-55896
             const QString cName = fileInfo.canonicalFilePath().normalized(QString::NormalizationForm_C);
-            bool equal = (file == cName);
-            re = (!equal && !cName.endsWith(relFile, Qt::CaseSensitive));
+            if (file != cName && !cName.endsWith(relFile, Qt::CaseSensitive)) {
+                qCWarning(lcPropagator) << "Detected case clash between" << file << "and" << cName;
+                return true;
+            }
         }
 #elif defined(Q_OS_WIN)
-        const QString file(_localDir + relFile);
-        qCDebug(lcPropagator) << "CaseClashCheck for " << file;
         WIN32_FIND_DATA FindFileData;
         HANDLE hFind;
 
@@ -552,12 +573,12 @@ bool OwncloudPropagator::localFileNameClash(const QString &relFile)
         if (hFind == INVALID_HANDLE_VALUE) {
             // returns false.
         } else {
-            QString realFileName = QString::fromWCharArray(FindFileData.cFileName);
+            const QString realFileName = QString::fromWCharArray(FindFileData.cFileName);
             FindClose(hFind);
 
             if (!file.endsWith(realFileName, Qt::CaseSensitive)) {
                 qCWarning(lcPropagator) << "Detected case clash between" << file << "and" << realFileName;
-                re = true;
+                return true;
             }
         }
 #else
@@ -565,13 +586,13 @@ bool OwncloudPropagator::localFileNameClash(const QString &relFile)
         // Just check that there is no other file with the same name and different casing.
         QFileInfo fileInfo(file);
         const QString fn = fileInfo.fileName();
-        QStringList list = fileInfo.dir().entryList(QStringList() << fn);
+        const QStringList list = fileInfo.dir().entryList({ fn });
         if (list.count() > 1 || (list.count() == 1 && list[0] != fn)) {
-            re = true;
+            return true;
         }
 #endif
     }
-    return re;
+    return false;
 }
 
 bool OwncloudPropagator::hasCaseClashAccessibilityProblem(const QString &relfile)
