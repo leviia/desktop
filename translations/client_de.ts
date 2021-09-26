@@ -130,7 +130,7 @@
     <message>
         <location filename="../src/common/filesystembase.cpp" line="398"/>
         <location filename="../src/common/filesystembase.cpp" line="404"/>
-        <source>Could not move &quot;%1&quot; to &quot;%1&quot;</source>
+        <source>Could not move &quot;%1&quot; to &quot;%2&quot;</source>
         <translation>Konnte &quot;%1&quot; nicht nach &quot;%2&quot; verschieben</translation>
     </message>
     <message>
@@ -886,7 +886,7 @@ Diese Aktion bricht jede derzeit laufende Synchronisierung ab.</translation>
     <message>
         <location filename="../src/gui/conflictdialog.ui" line="14"/>
         <source>Sync Conflict</source>
-        <translation>Syncronisations-Konflikt</translation>
+        <translation>Synchronisations-Konflikt</translation>
     </message>
     <message>
         <location filename="../src/gui/conflictdialog.ui" line="20"/>
@@ -2278,6 +2278,69 @@ Objekte, bei denen Löschen erlaubt ist, werden gelöscht, wenn diese das Lösch
     </message>
 </context>
 <context>
+    <name>OCC::InvalidFilenameDialog</name>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.ui" line="14"/>
+        <source>Invalid filename</source>
+        <translation>Ungültiger Dateiname</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.ui" line="23"/>
+        <source>The file could not be synced because it contains characters which are not allowed on this system.</source>
+        <translation>Die Datei konnte nicht synchronisiert werden, da der Name Zeichen enthält, die auf diesem System nicht zulässig sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.ui" line="36"/>
+        <source>Error</source>
+        <translation>Fehler</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.ui" line="49"/>
+        <source>Please enter a new name for the file:</source>
+        <translation>Bitte geben Sie einen neuen Namen für die Datei ein:</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.ui" line="62"/>
+        <source>New filename</source>
+        <translation>Neuer Dateiname</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="71"/>
+        <source>Rename file</source>
+        <translation>Datei umbenennen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="73"/>
+        <source>The file %1 could not be synced because it contains characters which are not allowed on this system.</source>
+        <translation>Die Datei %1 konnte nicht synchronisiert werden, da der Name Zeichen enthält, die auf diesem System nicht zulässig sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="74"/>
+        <source>The following characters are not allowed on the system: * &quot; | &amp; ? , ; : \ / ~ &lt; &gt;</source>
+        <translation>Die folgenden Zeichen sind auf dem System nicht erlaubt: * &quot; | &amp; ? , ; : \ / ~ &lt; &gt;</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="105"/>
+        <source>You don&apos;t have the permission to rename this file. Please ask the author of the file to rename it.</source>
+        <translation>Sie haben nicht die Berechtigung, diese Datei umzubenennen. Bitte wenden Sie sich an den Autor der Datei, um sie umzubenennen.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="130"/>
+        <source>Filename contains illegal characters: %1</source>
+        <translation>Dateiname enthält unzulässige Zeichen: %1</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="144"/>
+        <source>Could not rename file. Please make sure you are connected to the server.</source>
+        <translation>Datei konnte nicht umbenannt werden. Bitte stellen Sie sicher, dass Sie mit dem Server verbunden sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="155"/>
+        <source>Can not rename file because file with the same name does already exist on the server. Please pick another name.</source>
+        <translation>Die Datei kann nicht umbenannt werden, da eine Datei mit demselben Namen bereits auf dem Server existiert. Bitte wählen Sie einen anderen Namen.</translation>
+    </message>
+</context>
+<context>
     <name>OCC::LegalNotice</name>
     <message>
         <location filename="../src/gui/legalnotice.ui" line="14"/>
@@ -2461,6 +2524,11 @@ Protokolle werden in % 1 geschrieben</translation>
         <translation>&lt;p&gt;Eine neue Version des %1 - Clients ist verfügbar, aber die Aktualisierung ist fehlgeschlagen.&lt;/p&gt;&lt;p&gt;&lt;b&gt;%2&lt;/b&gt; wurde heruntergeladen. Die installierte Version ist %3.&lt;/p&gt;</translation>
     </message>
     <message>
+        <location filename="../src/gui/updater/ocupdater.cpp" line="463"/>
+        <source>&lt;p&gt;A new version of the %1 Client is available but the updating process failed.&lt;/p&gt;&lt;p&gt;&lt;b&gt;%2&lt;/b&gt; has been downloaded. The installed version is %3. If you confirm restart and update, your computer may reboot to complete the installation.&lt;/p&gt;</source>
+        <translation>&lt;p&gt;Eine neue Version des %1 - Clients ist verfügbar, aber die Aktualisierung ist fehlgeschlagen.&lt;/p&gt;&lt;p&gt;&lt;b&gt;%2&lt;/b&gt; wurde heruntergeladen. Die installierte Version ist %3. Wenn Sie Neustart und Aktualisieren bestätigen, wird Ihr Computer möglicherweise neu gestartet, um die Installation abzuschließen.&lt;/p&gt;</translation>
+    </message>
+    <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="469"/>
         <source>Ask again later</source>
         <translation>Versuchen Sie es später erneut</translation>
@@ -2642,8 +2710,8 @@ for additional privileges during the process.</source>
     </message>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="109"/>
-        <source>A new update for %1 is about to be installed. The updater may ask for additional privileges during the process.</source>
-        <translation>Eine neue Aktualisierung für %1 wird installiert. Während des Aktualisierungsvorgangs werden Sie eventuell aufgefordert, zusätzliche Berechtigungen zu gewähren.</translation>
+        <source>A new update for %1 is about to be installed. The updater may ask for additional privileges during the process. Your computer may reboot to complete the installation.</source>
+        <translation>Eine neue Aktualisierung für %1 wird installiert. Während des Aktualisierungsvorgangs werden Sie eventuell aufgefordert, zusätzliche Berechtigungen zu gewähren. Ihr Computer wird möglicherweise neu gestartet, um die Installation abzuschließen.</translation>
     </message>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="143"/>
@@ -2681,6 +2749,11 @@ for additional privileges during the process.</source>
         <translation>Neue Version von %1 vorhanden. Bitte klicken Sie &lt;a href=&apos;%2&apos;&gt;hier&lt;/a&gt; um die Aktualisierung herunterzuladen.</translation>
     </message>
     <message>
+        <location filename="../src/gui/updater/ocupdater.cpp" line="158"/>
+        <source>Could not download update. Please open &lt;a href=&apos;%1&apos;&gt;%1&lt;/a&gt; to download the update manually.</source>
+        <translation>Aktualisierung kann nicht herunter geladen werden. Bitte öffnen Sie &lt;a href=&apos;%1&apos;&gt;%1&lt;/a&gt;, um die Aktualisierung manuell herunterzuladen.</translation>
+    </message>
+    <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="157"/>
         <source>Could not download update. Please open %1 to download the update manually.</source>
         <translation>Aktualisierung kann nicht herunter geladen werden. Bitte öffnen Sie %1 um die Aktualisierung manuell herunterzuladen.</translation>
@@ -2689,6 +2762,11 @@ for additional privileges during the process.</source>
         <location filename="../src/gui/updater/ocupdater.cpp" line="159"/>
         <source>Could not check for new updates.</source>
         <translation>Auf neue Aktualisierungen kann nicht geprüft werden.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/updater/ocupdater.cpp" line="166"/>
+        <source>New %1 is available. Please open &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt; to download the update.</source>
+        <translation>Neue Version von %1 vorhanden. Bitte öffnen Sie &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt; um die Aktualisierung herunterzuladen.</translation>
     </message>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="161"/>
@@ -3950,11 +4028,6 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Bearbeitung erlauben</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="186"/>
-        <source>Allow editing</source>
-        <translation>Bearbeitung erlauben</translation>
-    </message>
-    <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="192"/>
         <source>Read only</source>
         <translation>Schreibgeschützt</translation>
@@ -3975,6 +4048,16 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Passwortschutz</translation>
     </message>
     <message>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="186"/>
+        <source>Allow editing</source>
+        <translation>Bearbeitung erlauben</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="194"/>
+        <source>View only</source>
+        <translation>Nur anzeigen</translation>
+    </message>
+    <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="198"/>
         <source>Allow upload and editing</source>
         <translation>Hochladen und Bearbeiten erlauben</translation>
@@ -3990,14 +4073,19 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Dateien ablegen (nur Hochladen)</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="218"/>
-        <source>Note to recipient</source>
-        <translation>Notiz an Empfänger</translation>
-    </message>
-    <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="220"/>
         <source>Unshare</source>
         <translation>Freigabe aufheben</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="223"/>
+        <source>Link name</source>
+        <translation>Link-Name</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="218"/>
+        <source>Note to recipient</source>
+        <translation>Notiz an Empfänger</translation>
     </message>
     <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="228"/>
@@ -4010,14 +4098,19 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Ablaufdatum setzen</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="266"/>
-        <source>Delete share link</source>
-        <translation>Freigabe-Link löschen</translation>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="302"/>
+        <source>Delete link</source>
+        <translation>Link löschen</translation>
     </message>
     <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="271"/>
         <source>Add another link</source>
         <translation>Weiteren Link hinzufügen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="266"/>
+        <source>Delete share link</source>
+        <translation>Freigabe-Link löschen</translation>
     </message>
     <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="508"/>
@@ -4068,7 +4161,7 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Keine Ergebnisse für &apos;%1&apos;</translation>
     </message>
     <message>
-        <location filename="../src/gui/shareusergroupwidget.cpp" line="337"/>
+        <location filename="../src/gui/shareusergroupwidget.cpp" line="339"/>
         <source>No results for &quot;%1&quot;</source>
         <translation>Keine Ergebnisse für &quot;%1&quot;</translation>
     </message>
@@ -4899,6 +4992,103 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
     </message>
 </context>
 <context>
+    <name>OCC::UserStatusSelectorModel</name>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="140"/>
+        <source>Could not fetch predefined statuses. Make sure you are connected to the server.</source>
+        <translation>Vordefinierte Status konnten nicht abgerufen werden. Stellen Sie bitte sicher, dass Sie mit dem Server verbunden sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="144"/>
+        <source>Could not fetch user status. Make sure you are connected to the server.</source>
+        <translation>Benutzerstatus konnte nicht abgerufen werden. Stellen Sie bitte sicher, dass Sie mit dem Server verbunden sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="148"/>
+        <source>User status feature is not supported. You will not be able to set your user status.</source>
+        <translation>Benutzerstatus-Funktion wird nicht unterstützt. Sie können Ihren Benutzerstatus nicht setzen,</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="152"/>
+        <source>Emojis feature is not supported. Some user status functionality may not work.</source>
+        <translation>Emoji-Funktion wird nicht unterstützt. Einige Benutzerstatus-Funktionen funktionieren unter Umständen nicht.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="156"/>
+        <source>Could not set user status. Make sure you are connected to the server.</source>
+        <translation>Benutzerstatus konnte nicht gesetzt werden. Stellen Sie bitte sicher, dass Sie mit dem Server verbunden sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="160"/>
+        <source>Could not clear user status message. Make sure you are connected to the server.</source>
+        <translation>Statusnachricht des Benutzers konnte nicht gelöscht werden. Stellen Sie bitte sicher, dass Sie mit dem Server verbunden sind.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="358"/>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="456"/>
+        <source>Don&apos;t clear</source>
+        <translation>Nicht löschen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="361"/>
+        <source>30 minutes</source>
+        <translation>30 Minuten</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="364"/>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="416"/>
+        <source>1 hour</source>
+        <translation>1 Stunde</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="367"/>
+        <source>4 hours</source>
+        <translation>4 Stunden</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="370"/>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="445"/>
+        <source>Today</source>
+        <translation>Heute</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="373"/>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="447"/>
+        <source>This week</source>
+        <translation>Diese Woche</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="405"/>
+        <source>Less than a minute</source>
+        <translation>Weniger als eine Minute</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="409"/>
+        <source>1 minute</source>
+        <translation>1 Minute</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="411"/>
+        <source>%1 minutes</source>
+        <translation>%1 Minuten</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="418"/>
+        <source>%1 hours</source>
+        <translation>%1 Stunden</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="423"/>
+        <source>1 day</source>
+        <translation>1 Tag</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/userstatusselectormodel.cpp" line="425"/>
+        <source>%1 days</source>
+        <translation>%1 Tage</translation>
+    </message>
+</context>
+<context>
     <name>OCC::Vfs</name>
     <message>
         <location filename="../src/common/vfs.cpp" line="74"/>
@@ -5526,16 +5716,6 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
     </message>
     <message>
         <location filename="../src/gui/tray/UserLine.qml" line="94"/>
-        <source>Current user status is online</source>
-        <translation>Aktueller Benutzerstatus ist Online</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/tray/UserLine.qml" line="94"/>
-        <source>Current user status is do not disturb</source>
-        <translation>Aktueller Benutzerstatus ist Nicht stören</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/tray/UserLine.qml" line="94"/>
         <source>Account connected</source>
         <translation>Konto verbunden</translation>
     </message>
@@ -5545,9 +5725,29 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Konto nicht verbunden</translation>
     </message>
     <message>
+        <location filename="../src/gui/tray/UserLine.qml" line="94"/>
+        <source>Current user status is online</source>
+        <translation>Aktueller Benutzerstatus ist Online</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/UserLine.qml" line="94"/>
+        <source>Current user status is do not disturb</source>
+        <translation>Aktueller Benutzerstatus ist Nicht stören</translation>
+    </message>
+    <message>
         <location filename="../src/gui/tray/UserLine.qml" line="158"/>
         <source>Account actions</source>
         <translation>Konto-Aktionen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/UserLine.qml" line="173"/>
+        <source>Remove Account</source>
+        <translation>Konto entfernen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/UserLine.qml" line="200"/>
+        <source>Set status</source>
+        <translation>Status setzen</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/UserLine.qml" line="192"/>
@@ -5562,14 +5762,62 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <translation>Anmelden</translation>
     </message>
     <message>
-        <location filename="../src/gui/tray/UserLine.qml" line="173"/>
-        <source>Remove Account</source>
-        <translation>Konto entfernen</translation>
-    </message>
-    <message>
         <location filename="../src/gui/tray/UserLine.qml" line="225"/>
         <source>Remove account</source>
         <translation>Konto löschen</translation>
+    </message>
+</context>
+<context>
+    <name>UserStatusSelector</name>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="38"/>
+        <source>Online status</source>
+        <translation>Online-Status</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="55"/>
+        <source>Online</source>
+        <translation>Online</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="65"/>
+        <source>Away</source>
+        <translation>Abwesend</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="76"/>
+        <source>Do not disturb</source>
+        <translation>Nicht stören</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="86"/>
+        <source>Invisible</source>
+        <translation>Unsichtbar</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="99"/>
+        <source>Status message</source>
+        <translation>Statusnachricht</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="137"/>
+        <source>What is your status?</source>
+        <translation>Wie ist Ihr Status?</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="165"/>
+        <source>Clear status message after</source>
+        <translation>Statusnachricht löschen nach</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="182"/>
+        <source>Clear status message</source>
+        <translation>Statusnachricht löschen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/UserStatusSelector.qml" line="188"/>
+        <source>Set status message</source>
+        <translation>Statusnachricht setzen</translation>
     </message>
 </context>
 <context>
@@ -5686,6 +5934,11 @@ Dies ist ein neuer, experimenteller Modus. Wenn Sie sich entscheiden, ihn zu ver
         <location filename="../src/gui/tray/Window.qml" line="244"/>
         <source>Pause sync for all</source>
         <translation>Synchronisierung für alle pausieren</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/Window.qml" line="177"/>
+        <source>Set user status</source>
+        <translation>Benutzerstatus setzen</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/Window.qml" line="203"/>

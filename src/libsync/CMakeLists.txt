@@ -55,11 +55,19 @@ set(libsync_SRCS
     theme.cpp
     clientsideencryption.cpp
     clientsideencryptionjobs.cpp
+    datetimeprovider.cpp
+    ocsuserstatusconnector.cpp
+    userstatusconnector.cpp
     creds/dummycredentials.cpp
     creds/abstractcredentials.cpp
     creds/credentialscommon.cpp
     creds/keychainchunk.cpp
 )
+
+if (WIN32)
+    # to fix warnings from ntstatus.h
+    add_definitions(-DUMDF_USING_NTSTATUS)
+endif()
 
 if(TOKEN_AUTH_ONLY)
     set (libsync_SRCS ${libsync_SRCS} creds/tokencredentials.cpp)
