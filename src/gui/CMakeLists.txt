@@ -20,6 +20,7 @@ set(admin_win_dir ${CMAKE_SOURCE_DIR}/admin/win)
 set(client_UI_SRCS
     accountsettings.ui
     conflictdialog.ui
+    invalidfilenamedialog.ui
     foldercreationdialog.ui
     folderwizardsourcepage.ui
     folderwizardtargetpage.ui
@@ -37,6 +38,8 @@ set(client_UI_SRCS
     addcertificatedialog.ui
     proxyauthdialog.ui
     mnemonicdialog.ui
+    UserStatusSelector.qml
+    UserStatusSelectorDialog.qml
     tray/ActivityActionButton.qml
     tray/ActivityItem.qml
     tray/Window.qml
@@ -55,6 +58,7 @@ set(client_SRCS
     accountmanager.cpp
     accountsettings.cpp
     application.cpp
+    invalidfilenamedialog.cpp
     conflictdialog.cpp
     conflictsolver.cpp
     connectionvalidator.cpp
@@ -94,7 +98,6 @@ set(client_SRCS
     systray.cpp
     thumbnailjob.cpp
     userinfo.cpp
-    userstatus.cpp
     accountstate.cpp
     addcertificatedialog.cpp
     authenticationdialog.cpp
@@ -108,6 +111,8 @@ set(client_SRCS
     iconjob.cpp
     iconutils.cpp
     remotewipe.cpp
+    userstatusselectormodel.cpp
+    emojimodel.cpp
     tray/ActivityData.cpp
     tray/ActivityListModel.cpp
     tray/UserModel.cpp
@@ -570,10 +575,6 @@ if(WITH_CRASHREPORTER)
         target_link_libraries(nextcloudCore PUBLIC Threads::Threads)
     endif()
 endif()
-
-# application.cpp still uses QDesktopServices::storageLocation
-target_compile_definitions(nextcloudCore PRIVATE "QT_DISABLE_DEPRECATED_BEFORE=0")
-
 
 install(TARGETS nextcloud
         RUNTIME DESTINATION bin
