@@ -42,6 +42,9 @@ if(NOT CRASHREPORTER_EXECUTABLE)
     set(CRASHREPORTER_EXECUTABLE "${APPLICATION_EXECUTABLE}_crash_reporter")
 endif()
 
+set(synclib_NAME "${APPLICATION_EXECUTABLE}sync")
+set(csync_NAME "${APPLICATION_EXECUTABLE}_csync")
+
 include(Warnings)
 
 if("${CMAKE_CXX_COMPILER_ID}" STREQUAL "GNU")

@@ -20,7 +20,7 @@ set( LINUX_APPLICATION_ID "${APPLICATION_REV_DOMAIN}.${LINUX_PACKAGE_SHORTNAME}"
 set( NEXTCLOUD_BACKGROUND_COLOR "#00bc73" )
 
 message("Branding: ${BRANDING_VALUE}")
-string(COMPARE NOTEQUAL "${BRANDING_VALUE}" "" __cmp)
+string(COMPARE NOTEQUAL "${BRANDING_VALUE}" "default" __cmp)
 if(__cmp)
     message("Custom branding")
     include(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}.cmake)

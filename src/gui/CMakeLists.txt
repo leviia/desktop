@@ -258,16 +258,16 @@ function(generate_sized_png_from_svg icon_path size)
   set(icon_output_name "${size}-${icon_name_wle}.png")
   message(STATUS "Generate ${icon_output_name}")
   execute_process(COMMAND
-    "${INKSCAPE}" -w ${size} -h ${size} "${icon_path}" -o "${icon_output_name}"
+    "${SVG_CONVERTER}" -w ${size} -h ${size} "${icon_path}" -o "${icon_output_name}"
     WORKING_DIRECTORY "${icon_name_dir}"
     RESULT_VARIABLE
-    INKSCAPE_SIDEBAR_ERROR
+    SVG_CONVERTER_SIDEBAR_ERROR
     OUTPUT_QUIET
     ERROR_QUIET)
 
-  if (INKSCAPE_SIDEBAR_ERROR)
+  if (SVG_CONVERTER_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${SVG_CONVERTER} could not generate icon: ${SVG_CONVERTER_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
@@ -307,16 +307,16 @@ function(generate_sized_png_from_svg_x icon_path w h factor)
   math(EXPR HEIGHT "${h}*${factor}")
 
   execute_process(COMMAND
-    "${INKSCAPE}" -w ${WIDTH} -h ${HEIGHT} "${icon_path}" -o "${icon_output_name}"
+    "${SVG_CONVERTER}" -w ${WIDTH} -h ${HEIGHT} "${icon_path}" -o "${icon_output_name}"
     WORKING_DIRECTORY "${icon_name_dir}"
     RESULT_VARIABLE
-    INKSCAPE_SIDEBAR_ERROR
+    SVG_CONVERTER_SIDEBAR_ERROR
     OUTPUT_QUIET
     ERROR_QUIET)
 
-  if (INKSCAPE_SIDEBAR_ERROR)
+  if (SVG_CONVERTER_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${SVG_CONVERTER} could not generate icon: ${SVG_CONVERTER_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
@@ -335,16 +335,16 @@ function(generate_sized_png_from_svg_at_x icon_path w h factor)
   math(EXPR HEIGHT "${h}*${factor}")
 
   execute_process(COMMAND
-    "${INKSCAPE}" -w ${WIDTH} -h ${HEIGHT} "${icon_path}" -o "${icon_output_name}"
+    "${SVG_CONVERTER}" -w ${WIDTH} -h ${HEIGHT} "${icon_path}" -o "${icon_output_name}"
     WORKING_DIRECTORY "${icon_name_dir}"
     RESULT_VARIABLE
-    INKSCAPE_SIDEBAR_ERROR
+    SVG_CONVERTER_SIDEBAR_ERROR
     OUTPUT_QUIET
     ERROR_QUIET)
 
-  if (INKSCAPE_SIDEBAR_ERROR)
+  if (SVG_CONVERTER_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${SVG_CONVERTER} could not generate icon: ${SVG_CONVERTER_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
@@ -433,7 +433,6 @@ add_library(nextcloudCore STATIC ${final_src})
 
 target_link_libraries(nextcloudCore
   PUBLIC
-  nextcloudsync
   Qt5::Widgets
   Qt5::GuiPrivate
   Qt5::Svg
@@ -442,6 +441,7 @@ target_link_libraries(nextcloudCore
   Qt5::Qml
   Qt5::Quick
   Qt5::QuickControls2
+  ${synclib_NAME}
   )
 
 add_subdirectory(socketapi)
@@ -484,23 +484,17 @@ if(NOT BUILD_OWNCLOUD_OSX_BUNDLE)
     endif()
 
     # we may not add MACOSX_BUNDLE here, if not building one
-    add_executable(nextcloud WIN32 main.cpp ${client_version} ${client_manifest} ${APP_ICON})
-    set_target_properties(nextcloud PROPERTIES
-      OUTPUT_NAME "${APPLICATION_EXECUTABLE}"
-    )
+    add_executable(${APPLICATION_EXECUTABLE} WIN32 main.cpp ${client_version} ${client_manifest} ${APP_ICON})
 else()
     # set(CMAKE_INSTALL_PREFIX ".") # Examples use /Applications. hurmpf.
     set(MACOSX_BUNDLE_ICON_FILE "${APPLICATION_ICON_NAME}.icns")
 
     # we must add MACOSX_BUNDLE only if building a bundle
-    add_executable(nextcloud WIN32 MACOSX_BUNDLE main.cpp ${APP_ICON})
+    add_executable(${APPLICATION_EXECUTABLE} WIN32 MACOSX_BUNDLE main.cpp ${APP_ICON})
 
     if (BUILD_OWNCLOUD_OSX_BUNDLE)
-      set_target_properties(nextcloud PROPERTIES
+      set_target_properties(${APPLICATION_EXECUTABLE} PROPERTIES
         OUTPUT_NAME "${APPLICATION_NAME}")
-    else()
-      set_target_properties(nextcloud PROPERTIES
-        OUTPUT_NAME "${APPLICATION_EXECUTABLE}")
     endif()
 
     set (QM_DIR ${OWNCLOUD_OSX_BUNDLE}/Contents/Resources/Translations)
@@ -520,17 +514,20 @@ endif()
 
 IF(BUILD_UPDATER)
     add_library(updater STATIC ${updater_SRCS})
-    target_link_libraries(updater nextcloudsync ${updater_DEPS} Qt5::Widgets Qt5::Svg Qt5::Network Qt5::Xml)
+    target_link_libraries(updater ${synclib_NAME} ${updater_DEPS} Qt5::Widgets Qt5::Svg Qt5::Network Qt5::Xml)
     target_include_directories(updater PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
     set_target_properties(updater PROPERTIES AUTOMOC ON)
-    target_link_libraries(nextcloudCore PUBLIC updater)
 endif()
 
-set_target_properties(nextcloud PROPERTIES
-        RUNTIME_OUTPUT_DIRECTORY ${BIN_OUTPUT_DIRECTORY}
+set_target_properties( ${APPLICATION_EXECUTABLE} PROPERTIES
+        RUNTIME_OUTPUT_DIRECTORY  ${BIN_OUTPUT_DIRECTORY}
 )
 
-target_link_libraries(nextcloud PRIVATE nextcloudCore)
+target_link_libraries(${APPLICATION_EXECUTABLE} nextcloudCore)
+
+IF(BUILD_UPDATER)
+  target_link_libraries(nextcloudCore PUBLIC updater)
+endif()
 
 if(TARGET PkgConfig::CLOUDPROVIDERS)
     message("Building with libcloudproviderssupport")
@@ -576,7 +573,11 @@ if(WITH_CRASHREPORTER)
     endif()
 endif()
 
-install(TARGETS nextcloud
+# application.cpp still uses QDesktopServices::storageLocation
+target_compile_definitions(nextcloudCore PRIVATE "QT_DISABLE_DEPRECATED_BEFORE=0")
+
+
+install(TARGETS ${APPLICATION_EXECUTABLE}
         RUNTIME DESTINATION bin
         LIBRARY DESTINATION lib
         ARCHIVE DESTINATION lib
