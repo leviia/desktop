@@ -265,7 +265,7 @@ function(generate_sized_png_from_svg icon_path size)
 
   if (INKSCAPE_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${INKSCAPE} could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
@@ -286,7 +286,7 @@ function(generate_sized_png_from_svg_v2 icon_path size)
 
   if (INKSCAPE_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${INKSCAPE} could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
@@ -314,7 +314,7 @@ function(generate_sized_png_from_svg_x icon_path w h factor)
 
   if (INKSCAPE_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${INKSCAPE} could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
@@ -342,7 +342,7 @@ function(generate_sized_png_from_svg_at_x icon_path w h factor)
 
   if (INKSCAPE_SIDEBAR_ERROR)
     message(FATAL_ERROR
-      "inkscape could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
+      "${INKSCAPE} could not generate icon: ${INKSCAPE_SIDEBAR_ERROR}")
   else()
   endif()
 endfunction()
