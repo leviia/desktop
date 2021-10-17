@@ -211,3 +211,8 @@ theme/colored/wizard-talk@2x.png
 theme/colored/wizard_logo.png
 theme/colored/wizard_logo@2x.png
 theme/leviia.VisualElementsManifest.xml
+
+brandings/*.inc.bat
+brandings/*.cmake
+brandings/ville-meaux/*
+brandings/pariscabane/*
