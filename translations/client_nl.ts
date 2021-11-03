@@ -15,12 +15,6 @@
         <translation>%1 lokaal openen</translation>
     </message>
     <message>
-        <location filename="../src/gui/tray/ActivityItem.qml" line="161"/>
-        <location filename="../src/gui/tray/ActivityItem.qml" line="164"/>
-        <source>Show more actions</source>
-        <translation>Toon meer acties</translation>
-    </message>
-    <message>
         <location filename="../src/gui/tray/ActivityItem.qml" line="251"/>
         <source>Open share dialog</source>
         <translation>Open het dialoogvenster voor delen</translation>
@@ -29,6 +23,25 @@
         <location filename="../src/gui/tray/ActivityItem.qml" line="255"/>
         <source>Share %1</source>
         <translation>Deel %1</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/ActivityItem.qml" line="161"/>
+        <location filename="../src/gui/tray/ActivityItem.qml" line="164"/>
+        <source>Show more actions</source>
+        <translation>Toon meer acties</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/ActivityItem.qml" line="240"/>
+        <source>View activity</source>
+        <translation>Activiteit bekijken</translation>
+    </message>
+</context>
+<context>
+    <name>ActivityList</name>
+    <message>
+        <location filename="../src/gui/tray/ActivityList.qml" line="24"/>
+        <source>Activity list</source>
+        <translation>Activiteitlijst</translation>
     </message>
 </context>
 <context>
@@ -131,7 +144,7 @@
         <location filename="../src/common/filesystembase.cpp" line="398"/>
         <location filename="../src/common/filesystembase.cpp" line="404"/>
         <source>Could not move &quot;%1&quot; to &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Kon &quot;%1&quot; niet verplaatsen naar &quot;%2&quot;</translation>
     </message>
     <message>
         <location filename="../src/common/filesystembase.cpp" line="438"/>
@@ -157,7 +170,7 @@
     <message>
         <location filename="../src/libsync/filesystem.cpp" line="174"/>
         <source>Could not remove folder &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Kan map &quot;%1&quot; niet verwijderen</translation>
     </message>
     <message>
         <location filename="../src/libsync/filesystem.cpp" line="174"/>
@@ -336,7 +349,7 @@
     <message>
         <location filename="../src/gui/accountsettings.cpp" line="89"/>
         <source>You seem to have the Virtual Files feature enabled on this folder. At the moment, it is not possible to implicitly download virtual files that are End-to-End encrypted. To get the best experience with Virtual Files and End-to-End Encryption, make sure the encrypted folder is marked with &quot;Make always available locally&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Het lijkt erop dat de functie Virtuele bestanden voor deze map is ingeschakeld. Momenteel is het niet mogelijk om impliciet virtuele bestanden te downloaden die end-to-end versleuteld zijn. Om de beste ervaring met virtuele bestanden en end-to-end-versleuteling te krijgen, raden we aan om ervoor te zorgen dat de versleutelde map is gemarkeerd met &quot;Altijd lokaal beschikbaar maken&quot;.</translation>
     </message>
     <message>
         <location filename="../src/gui/accountsettings.cpp" line="97"/>
@@ -841,7 +854,7 @@ Dit zal alle synchronisaties, die op dit moment bezig zijn, afbreken.</translati
     <message>
         <location filename="../src/gui/authenticationdialog.cpp" line="32"/>
         <source>Enter username and password for &quot;%1&quot; at %2.</source>
-        <translation type="unfinished"/>
+        <translation>Geef gebruikersnaam en wachtwoord op voor &quot;%1&quot; bij %2.</translation>
     </message>
     <message>
         <location filename="../src/gui/authenticationdialog.cpp" line="32"/>
@@ -1115,7 +1128,7 @@ Dit kan een probleem zijn met je OpenSSL-bibliotheken.</translation>
         <location filename="../src/gui/creds/flow2auth.cpp" line="118"/>
         <location filename="../src/gui/creds/flow2auth.cpp" line="226"/>
         <source>There was an error accessing the &quot;token&quot; endpoint: &lt;br&gt;&lt;em&gt;%1&lt;/em&gt;</source>
-        <translation type="unfinished"/>
+        <translation>Er trad een fout op bij het benaderen van het &quot;token&quot; endpoint: &lt;br&gt;&lt;em&gt;%1&lt;/em&gt;</translation>
     </message>
     <message>
         <location filename="../src/gui/creds/flow2auth.cpp" line="121"/>
@@ -1410,14 +1423,18 @@ Doorgaan met deze synchronisatie overschrijft al je bestanden door een eerdere v
 These deletes will be synchronized to your local sync folder, making such files unavailable unless you have a right to restore. 
 If you decide to restore the files, they will be re-synced with the server if you have rights to do so.
 If you decide to delete the files, they will be unavailable to you, unless you are the owner.</source>
-        <translation type="unfinished"/>
+        <translation>Alle bestanden in de syncmap&quot;&apos;%1&quot; map werden verwijderd van de server.
+Deze verwijderingen worden gesynchroniseerd naar je lokale syncmap, waardoor deze bestanden niet meer beschikbaar zijn, tenzij je het recht hebt om ze te herstellen. 
+Als je de bestanden wilt behouden, worden ze opnieuw gesynchroniseerd met de server als je die autorisatie hebt.
+Als je de bestanden wilt verwijderen, worden ze niet beschikbaar, tenzij je de eigenaar bent.</translation>
     </message>
     <message>
         <location filename="../src/gui/folder.cpp" line="1237"/>
         <source>All the files in your local sync folder &quot;%1&quot; were deleted. These deletes will be synchronized with your server, making such files unavailable unless restored.
 Are you sure you want to sync those actions with the server?
 If this was an accident and you decide to keep your files, they will be re-synced from the server.</source>
-        <translation type="unfinished"/>
+        <translation>Alle bestanden in je lokale syncmap &quot;%1&quot; werden verwijderd. Deze verwijderingen worden gesynchroniseerd naar je server, waardoor de bestanden niet beschikbaar zijn, tenzij ze worden teruggezet. Weet je zeker dat je deze acties wilt synchroniseren met de server? 
+Als dit een ongelukje was en je de bestanden wilt behouden, worden ze opnieuw gesynchroniseerd met de server.</translation>
     </message>
     <message>
         <location filename="../src/gui/folder.cpp" line="1264"/>
@@ -1489,7 +1506,7 @@ Als je de bestanden wilt verwijderen, worden ze niet beschikbaar, tenzij je de e
     <message>
         <location filename="../src/gui/folderman.cpp" line="390"/>
         <source>An old sync journal &quot;%1&quot; was found, but could not be removed. Please make sure that no application is currently using it.</source>
-        <translation type="unfinished"/>
+        <translation>Een oud synchronisatieverslag  &quot;%1&quot; is gevonden maar kan niet worden verwijderd. Zorg ervoor dat geen applicatie dit bestand gebruikt.</translation>
     </message>
     <message>
         <location filename="../src/gui/folderman.cpp" line="1225"/>
@@ -1678,12 +1695,12 @@ Als je de bestanden wilt verwijderen, worden ze niet beschikbaar, tenzij je de e
     <message>
         <location filename="../src/gui/folderstatusmodel.cpp" line="973"/>
         <source>Checking for changes in remote &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Controleren op wijzigingen in externe &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/gui/folderstatusmodel.cpp" line="977"/>
         <source>Checking for changes in local &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Controleren op wijzigingen in lokale &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/gui/folderstatusmodel.cpp" line="984"/>
@@ -1843,7 +1860,7 @@ Als je de bestanden wilt verwijderen, worden ze niet beschikbaar, tenzij je de e
     <message>
         <location filename="../src/gui/folderwizard.cpp" line="184"/>
         <source>Enter the name of the new folder to be created below &quot;%1&quot;:</source>
-        <translation type="unfinished"/>
+        <translation>Voer de naam van de hieronder te maken nieuwe map in &quot;%1&quot;:</translation>
     </message>
     <message>
         <location filename="../src/gui/folderwizard.cpp" line="214"/>
@@ -2162,7 +2179,7 @@ Account: %3
     <message>
         <location filename="../src/gui/creds/httpcredentialsgui.cpp" line="111"/>
         <source>Reading from keychain failed with error: &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Het lezen van de sleutelketen is mislukt met fout: &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/gui/creds/httpcredentialsgui.cpp" line="111"/>
@@ -2205,7 +2222,7 @@ Account: %3
     <message>
         <location filename="../src/gui/ignorelisteditor.cpp" line="40"/>
         <source>This entry is provided by the system at &quot;%1&quot; and cannot be modified in this view.</source>
-        <translation type="unfinished"/>
+        <translation>Dit gegeven is door het systeem vastgelegd op &quot;%1&quot; en kan niet worden aangepast in deze weergave.</translation>
     </message>
     <message>
         <location filename="../src/gui/ignorelisteditor.cpp" line="40"/>
@@ -2257,7 +2274,7 @@ Onderdelen die gewist mogen worden, worden verwijderd als ze verhinderen dat een
     <message>
         <location filename="../src/gui/ignorelisttablewidget.cpp" line="94"/>
         <source>Cannot write changes to &quot;%1&quot;.</source>
-        <translation type="unfinished"/>
+        <translation>Kan geen wijzigingen wegschrijven naar &quot;%1&quot;.</translation>
     </message>
     <message>
         <location filename="../src/gui/ignorelisttablewidget.cpp" line="94"/>
@@ -2280,7 +2297,7 @@ Onderdelen die gewist mogen worden, worden verwijderd als ze verhinderen dat een
     <message>
         <location filename="../src/gui/invalidfilenamedialog.ui" line="14"/>
         <source>Invalid filename</source>
-        <translation type="unfinished"/>
+        <translation>Ongeldige bestandsnaam</translation>
     </message>
     <message>
         <location filename="../src/gui/invalidfilenamedialog.ui" line="23"/>
@@ -2290,7 +2307,7 @@ Onderdelen die gewist mogen worden, worden verwijderd als ze verhinderen dat een
     <message>
         <location filename="../src/gui/invalidfilenamedialog.ui" line="36"/>
         <source>Error</source>
-        <translation type="unfinished"/>
+        <translation>Fout</translation>
     </message>
     <message>
         <location filename="../src/gui/invalidfilenamedialog.ui" line="49"/>
@@ -2300,42 +2317,42 @@ Onderdelen die gewist mogen worden, worden verwijderd als ze verhinderen dat een
     <message>
         <location filename="../src/gui/invalidfilenamedialog.ui" line="62"/>
         <source>New filename</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe bestandsnaam</translation>
     </message>
     <message>
-        <location filename="../src/gui/invalidfilenamedialog.cpp" line="71"/>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="85"/>
         <source>Rename file</source>
-        <translation type="unfinished"/>
+        <translation>Bestand hernoemen</translation>
     </message>
     <message>
-        <location filename="../src/gui/invalidfilenamedialog.cpp" line="73"/>
-        <source>The file %1 could not be synced because it contains characters which are not allowed on this system.</source>
-        <translation type="unfinished"/>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="87"/>
+        <source>The file %1 could not be synced because the name contains characters which are not allowed on this system.</source>
+        <translation>Het bestand %1 kan niet worden gesynchroniseerd omdat de naam tekens bevat die niet zijn toegestaan op dit systeem.</translation>
     </message>
     <message>
-        <location filename="../src/gui/invalidfilenamedialog.cpp" line="74"/>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="88"/>
         <source>The following characters are not allowed on the system: * &quot; | &amp; ? , ; : \ / ~ &lt; &gt;</source>
-        <translation type="unfinished"/>
+        <translation>De volgende tekens zijn niet toegestaan op het systeem: * &quot; | &amp; ? , ; : \ / ~ &lt; &gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/invalidfilenamedialog.cpp" line="105"/>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="119"/>
         <source>You don&apos;t have the permission to rename this file. Please ask the author of the file to rename it.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
-        <location filename="../src/gui/invalidfilenamedialog.cpp" line="130"/>
-        <source>Filename contains illegal characters: %1</source>
-        <translation type="unfinished"/>
+        <translation>Je bent niet gemachtigd om de naam van dit bestand te hernoemen. Vraag de auteur van het bestand om het te hernoemen.</translation>
     </message>
     <message>
         <location filename="../src/gui/invalidfilenamedialog.cpp" line="144"/>
-        <source>Could not rename file. Please make sure you are connected to the server.</source>
-        <translation type="unfinished"/>
+        <source>Filename contains illegal characters: %1</source>
+        <translation>Bestandsnaam bevat ongeldige tekens: %1</translation>
     </message>
     <message>
-        <location filename="../src/gui/invalidfilenamedialog.cpp" line="155"/>
-        <source>Can not rename file because file with the same name does already exist on the server. Please pick another name.</source>
-        <translation type="unfinished"/>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="158"/>
+        <source>Could not rename file. Please make sure you are connected to the server.</source>
+        <translation>Kan de naam van het bestand niet hernoemen. Zorg ervoor dat je verbonden bent met de server.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/invalidfilenamedialog.cpp" line="169"/>
+        <source>Cannot rename file because a file with the same name does already exist on the server. Please pick another name.</source>
+        <translation>Kan de naam van het bestand niet hernoemen omdat er al een bestand met dezelfde naam op de server bestaat. Kies een andere naam.</translation>
     </message>
 </context>
 <context>
@@ -2478,7 +2495,7 @@ Logs worden geschreven naar %1</translation>
         <translation>&lt;nobr&gt;Bestand &apos;%1&apos;&lt;br/&gt;kan niet worden geopend voor schrijven.&lt;br/&gt;&lt;br/&gt;De logging output kan &lt;b&gt;niet&lt;/b&gt; worden weggeschreven!&lt;/nobr&gt;</translation>
     </message>
     <message>
-        <location filename="../src/libsync/logger.cpp" line="149"/>
+        <location filename="../src/libsync/logger.cpp" line="151"/>
         <source>&lt;nobr&gt;File &quot;%1&quot;&lt;br/&gt;cannot be opened for writing.&lt;br/&gt;&lt;br/&gt;The log output &lt;b&gt;cannot&lt;/b&gt; be saved!&lt;/nobr&gt;</source>
         <translation type="unfinished"/>
     </message>
@@ -2750,7 +2767,7 @@ vragen om extra autorisaties tijdens installatie.</translation>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="158"/>
         <source>Could not download update. Please open &lt;a href=&apos;%1&apos;&gt;%1&lt;/a&gt; to download the update manually.</source>
-        <translation type="unfinished"/>
+        <translation>Kon de download niet bijwerken. Open &lt;a href=&apos;%1&apos;&gt;%1&lt;/a&gt; om de download handmatig bij te werken.</translation>
     </message>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="157"/>
@@ -2765,7 +2782,7 @@ vragen om extra autorisaties tijdens installatie.</translation>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="166"/>
         <source>New %1 is available. Please open &lt;a href=&apos;%2&apos;&gt;%2&lt;/a&gt; to download the update.</source>
-        <translation type="unfinished"/>
+        <translation>Nieuwe %1 beschikbaar. Open &lt;a href=&apos;%2&apos;&gt;%1&lt;/a&gt; om de update te downloaden.</translation>
     </message>
     <message>
         <location filename="../src/gui/updater/ocupdater.cpp" line="161"/>
@@ -2855,7 +2872,7 @@ vragen om extra autorisaties tijdens installatie.</translation>
     <message>
         <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="259"/>
         <source>%1 folder &quot;%2&quot; is synced to local folder &quot;%3&quot;</source>
-        <translation type="unfinished"/>
+        <translation>%1 map &quot;%2&quot; is gesynchroniseerd naar de lokale map &quot;%3&quot;</translation>
     </message>
     <message>
         <location filename="../src/gui/wizard/owncloudadvancedsetuppage.cpp" line="262"/>
@@ -3075,7 +3092,7 @@ Het is niet te adviseren om het te gebruiken.</translation>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="395"/>
         <source>The authenticated request to the server was redirected to &quot;%1&quot;. The URL is bad, the server is misconfigured.</source>
-        <translation type="unfinished"/>
+        <translation>De geauthentiseerde aanvraag voor de server werd omgeleid naar &quot;%1&quot;. De URL is onjuist, de server is verkeerd geconfigureerd.</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudsetupwizard.cpp" line="408"/>
@@ -3261,6 +3278,16 @@ Dit is een nieuwe, experimentele modus. Als je besluit het te gebruiken, vragen 
 <context>
     <name>OCC::ProcessDirectoryJob</name>
     <message>
+        <location filename="../src/libsync/discovery.cpp" line="56"/>
+        <source>File contains trailing spaces and could not be renamed, because a file with the same name already exists on the server.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/libsync/discovery.cpp" line="59"/>
+        <source>File contains trailing spaces and could not be renamed, because a file with the same name already exists locally.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/libsync/discovery.cpp" line="250"/>
         <source>Symbolic links are not supported in syncing.</source>
         <translation>Symbolische links worden niet ondersteund bij het synchroniseren.</translation>
@@ -3276,14 +3303,14 @@ Dit is een nieuwe, experimentele modus. Als je besluit het te gebruiken, vragen 
         <translation>Bestandsnamen die eindigen met een punt worden niet ondersteund door het bestandssysteem.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="271"/>
-        <source>File names containing the character &quot;%1&quot; are not supported on this file system.</source>
-        <translation type="unfinished"/>
-    </message>
-    <message>
         <location filename="../src/libsync/discovery.cpp" line="272"/>
         <source>File names containing the character &apos;%1&apos; are not supported on this file system.</source>
         <translation>Bestandsnamen met een &apos;%1&apos; symbool worden niet ondersteund door het bestandssysteem.</translation>
+    </message>
+    <message>
+        <location filename="../src/libsync/discovery.cpp" line="315"/>
+        <source>File names containing the character &quot;%1&quot; are not supported on this file system.</source>
+        <translation>Bestandsnamen met een &quot;%1&quot; symbool worden niet ondersteund door het bestandssysteem.</translation>
     </message>
     <message>
         <location filename="../src/libsync/discovery.cpp" line="276"/>
@@ -3411,9 +3438,9 @@ Dit is een nieuwe, experimentele modus. Als je besluit het te gebruiken, vragen 
         <translation>Server gaf een foutmelding bij lezen directory &apos;%1&apos; : %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1590"/>
+        <location filename="../src/libsync/discovery.cpp" line="1635"/>
         <source>Server replied with an error while reading directory &quot;%1&quot; : %2</source>
-        <translation type="unfinished"/>
+        <translation>Server gaf een foutmelding bij lezen directory &quot;%1&apos;&quot;: %2</translation>
     </message>
 </context>
 <context>
@@ -4055,7 +4082,7 @@ Fout bij instellen pin status
         <translation>Bewerken toestaan</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="194"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="193"/>
         <source>View only</source>
         <translation type="unfinished"/>
     </message>
@@ -4080,9 +4107,9 @@ Fout bij instellen pin status
         <translation>Stop met delen</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="223"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="222"/>
         <source>Link name</source>
-        <translation type="unfinished"/>
+        <translation>Linknaam</translation>
     </message>
     <message>
         <location filename="../src/gui/sharelinkwidget.cpp" line="218"/>
@@ -4100,7 +4127,7 @@ Fout bij instellen pin status
         <translation>Stel vervaldatum in</translation>
     </message>
     <message>
-        <location filename="../src/gui/sharelinkwidget.cpp" line="302"/>
+        <location filename="../src/gui/sharelinkwidget.cpp" line="305"/>
         <source>Delete link</source>
         <translation type="unfinished"/>
     </message>
@@ -4292,6 +4319,12 @@ Fout bij instellen pin status
         <location filename="../src/gui/socketapi.cpp" line="672"/>
         <source>Share via %1</source>
         <translation>Delen via %1</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/socketapi/socketapi.cpp" line="994"/>
+        <location filename="../src/gui/socketapi/socketapi.cpp" line="1137"/>
+        <source>Activity</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/gui/socketapi.cpp" line="920"/>
@@ -4516,6 +4549,11 @@ Fout bij instellen pin status
         <translation>Kan niet beveiligd verbinden met &lt;i&gt;%1&lt;/i&gt;:</translation>
     </message>
     <message>
+        <location filename="../src/gui/sslerrordialog.cpp" line="158"/>
+        <source>Additional errors:</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/gui/sslerrordialog.cpp" line="166"/>
         <source>with Certificate %1</source>
         <translation>met certificaat %1</translation>
@@ -4690,6 +4728,11 @@ Fout bij instellen pin status
         <translation>Slechts %1 beschikbaar, maar heeft minimaal %2 nodig om te starten</translation>
     </message>
     <message>
+        <location filename="../src/libsync/syncengine.cpp" line="1028"/>
+        <source>Aborted</source>
+        <translation>Afgebroken</translation>
+    </message>
+    <message>
         <location filename="../src/libsync/syncengine.cpp" line="1396"/>
         <location filename="../src/libsync/syncengine.cpp" line="1436"/>
         <source>Ignored because of the &quot;choose what to sync&quot; blacklist</source>
@@ -4842,24 +4885,85 @@ Fout bij instellen pin status
         <translation>Ongeldige tekens, hernoem &quot;%1&quot;</translation>
     </message>
     <message>
+        <location filename="../src/libsync/syncengine.cpp" line="1036"/>
+        <source>Synchronization will resume shortly.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../src/libsync/syncengine.cpp" line="1110"/>
         <source>File name contains at least one invalid character</source>
         <translation>De bestandsnaam bevat ten minste één ongeldig teken</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1081"/>
-        <source>Aborted</source>
-        <translation>Afgebroken</translation>
-    </message>
-    <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1098"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1045"/>
         <source>Disk space is low: Downloads that would reduce free space below %1 were skipped.</source>
         <translation>Schijfruimte laa: Downloads die de vrije ruimte tot onder %1 zouden reduceren, zijn overgeslagen.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/syncengine.cpp" line="1105"/>
+        <location filename="../src/libsync/syncengine.cpp" line="1052"/>
         <source>There is insufficient space available on the server for some uploads.</source>
         <translation>Onvoldoende schijfruimte op de server voor sommige uploads.</translation>
+    </message>
+</context>
+<context>
+    <name>OCC::SyncStatusSummary</name>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="124"/>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="313"/>
+        <source>Offline</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="138"/>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="316"/>
+        <location filename="../src/gui/tray/syncstatussummary.h" line="89"/>
+        <source>All synced!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="147"/>
+        <source>Some files couldn&apos;t be synced!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="148"/>
+        <source>See below for errors</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="155"/>
+        <source>Syncing</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="162"/>
+        <source>Sync paused</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="169"/>
+        <source>Some files could not be synced!</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="170"/>
+        <source>See below for warnings</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="218"/>
+        <source>%1 of %2 · %3 left</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="222"/>
+        <source>%1 of %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/syncstatussummary.cpp" line="227"/>
+        <source>Syncing file %1 of %2</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -4938,6 +5042,29 @@ Fout bij instellen pin status
     </message>
 </context>
 <context>
+    <name>OCC::UnifiedSearchResultsListModel</name>
+    <message>
+        <location filename="../src/gui/tray/unifiedsearchresultslistmodel.cpp" line="373"/>
+        <source>Failed to fetch providers.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/unifiedsearchresultslistmodel.cpp" line="384"/>
+        <source>Failed to fetch search providers for &apos;%1&apos;. Error: %2</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/unifiedsearchresultslistmodel.cpp" line="418"/>
+        <source>Search has failed for &apos;%2&apos;.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/unifiedsearchresultslistmodel.cpp" line="447"/>
+        <source>Search has failed for &apos;%1&apos;. Error: %2</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OCC::User</name>
     <message>
         <location filename="../src/gui/tray/UserModel.cpp" line="435"/>
@@ -4998,12 +5125,12 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="140"/>
         <source>Could not fetch predefined statuses. Make sure you are connected to the server.</source>
-        <translation type="unfinished"/>
+        <translation>Kan vooraf gedefinieerde statussen niet ophalen. Zorg ervoor dat je verbonden bent met de server.</translation>
     </message>
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="144"/>
         <source>Could not fetch user status. Make sure you are connected to the server.</source>
-        <translation type="unfinished"/>
+        <translation>Kan gebruikersstatus niet ophalen. Zorg ervoor dat je verbonden bent met de server.</translation>
     </message>
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="148"/>
@@ -5018,18 +5145,18 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="156"/>
         <source>Could not set user status. Make sure you are connected to the server.</source>
-        <translation type="unfinished"/>
+        <translation>Kan gebruikersstatus niet instellen. Zorg ervoor dat je verbonden bent met de server.</translation>
     </message>
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="160"/>
         <source>Could not clear user status message. Make sure you are connected to the server.</source>
-        <translation type="unfinished"/>
+        <translation>Kan het gebruikersstatusbericht niet wissen. Zorg ervoor dat je verbonden bent met de server.</translation>
     </message>
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="358"/>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="456"/>
         <source>Don&apos;t clear</source>
-        <translation type="unfinished"/>
+        <translation>Niet wissen</translation>
     </message>
     <message>
         <location filename="../src/gui/userstatusselectormodel.cpp" line="361"/>
@@ -5304,7 +5431,7 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/owncloudgui.cpp" line="418"/>
         <source>Checking for changes in remote &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Controleren op wijzigingen in externe &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudgui.cpp" line="419"/>
@@ -5314,7 +5441,7 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/owncloudgui.cpp" line="421"/>
         <source>Checking for changes in local &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Controleren op wijzigingen in lokale &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/gui/owncloudgui.cpp" line="437"/>
@@ -5705,6 +5832,38 @@ Fout bij instellen pin status
     </message>
 </context>
 <context>
+    <name>UnifiedSearchInputContainer</name>
+    <message>
+        <location filename="../src/gui/tray/UnifiedSearchInputContainer.qml" line="23"/>
+        <source>Search files, messages, events …</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>UnifiedSearchResultFetchMoreTrigger</name>
+    <message>
+        <location filename="../src/gui/tray/UnifiedSearchResultFetchMoreTrigger.qml" line="24"/>
+        <source>Load more results</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>UnifiedSearchResultItemSkeleton</name>
+    <message>
+        <location filename="../src/gui/tray/UnifiedSearchResultItemSkeleton.qml" line="25"/>
+        <source>Search result skeleton.</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>UnifiedSearchResultListItem</name>
+    <message>
+        <location filename="../src/gui/tray/UnifiedSearchResultListItem.qml" line="37"/>
+        <source>Load more results</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>UserLine</name>
     <message>
         <location filename="../src/gui/tray/UserLine.qml" line="15"/>
@@ -5749,7 +5908,7 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/tray/UserLine.qml" line="200"/>
         <source>Set status</source>
-        <translation type="unfinished"/>
+        <translation>Status instellen</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/UserLine.qml" line="192"/>
@@ -5774,17 +5933,17 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="38"/>
         <source>Online status</source>
-        <translation type="unfinished"/>
+        <translation>Online status</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="55"/>
         <source>Online</source>
-        <translation type="unfinished"/>
+        <translation>Online</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="65"/>
         <source>Away</source>
-        <translation type="unfinished"/>
+        <translation>Afwezig</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="76"/>
@@ -5794,32 +5953,32 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="86"/>
         <source>Invisible</source>
-        <translation type="unfinished"/>
+        <translation>Onzichtbaar</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="99"/>
         <source>Status message</source>
-        <translation type="unfinished"/>
+        <translation>Statusbericht</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="137"/>
         <source>What is your status?</source>
-        <translation type="unfinished"/>
+        <translation>Wat is je status?</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="165"/>
         <source>Clear status message after</source>
-        <translation type="unfinished"/>
+        <translation>Statusbericht wissen na</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="182"/>
         <source>Clear status message</source>
-        <translation type="unfinished"/>
+        <translation>Statusbericht wissen</translation>
     </message>
     <message>
         <location filename="../src/gui/UserStatusSelector.qml" line="188"/>
         <source>Set status message</source>
-        <translation type="unfinished"/>
+        <translation>Statusbericht instellen</translation>
     </message>
 </context>
 <context>
@@ -5905,12 +6064,12 @@ Fout bij instellen pin status
     <message>
         <location filename="../src/common/checksums.cpp" line="367"/>
         <source>The checksum header contained an unknown checksum type &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Het header controlegetal bevat een onbekend controlegetal type &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/common/checksums.cpp" line="371"/>
         <source>The downloaded file does not match the checksum, it will be resumed. &quot;%1&quot; != &quot;%2&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Het gedownloade bestand komt niet overeen met het controlegetal. Het wordt opnieuw verwerkt.  &quot;%1&quot; != &quot;%2&quot;</translation>
     </message>
 </context>
 <context>
@@ -5938,9 +6097,9 @@ Fout bij instellen pin status
         <translation>Synchronisatie voor iedereen onderbreken</translation>
     </message>
     <message>
-        <location filename="../src/gui/tray/Window.qml" line="177"/>
+        <location filename="../src/gui/tray/Window.qml" line="196"/>
         <source>Set user status</source>
-        <translation type="unfinished"/>
+        <translation>Gebruikersstatus instellen</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/Window.qml" line="203"/>
@@ -5976,12 +6135,6 @@ Fout bij instellen pin status
         <location filename="../src/gui/tray/Window.qml" line="356"/>
         <source>Current user status is do not disturb</source>
         <translation>Huidige gebruikersstatus is niet storen</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/tray/Window.qml" line="720"/>
-        <location filename="../src/gui/tray/Window.qml" line="723"/>
-        <source>Show more actions</source>
-        <translation>Toon meer acties</translation>
     </message>
     <message>
         <location filename="../src/gui/tray/Window.qml" line="816"/>
@@ -6042,6 +6195,22 @@ Fout bij instellen pin status
         <location filename="../src/gui/tray/Window.qml" line="812"/>
         <source>Open share dialog</source>
         <translation>Open het dialoogvenster voor delen</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/Window.qml" line="678"/>
+        <source>Unified search results list</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/Window.qml" line="720"/>
+        <location filename="../src/gui/tray/Window.qml" line="723"/>
+        <source>Show more actions</source>
+        <translation>Toon meer acties</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/tray/Window.qml" line="748"/>
+        <source>%1 - File activity</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>

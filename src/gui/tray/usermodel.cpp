@@ -1,5 +1,5 @@
-#include "NotificationHandler.h"
-#include "UserModel.h"
+#include "notificationhandler.h"
+#include "usermodel.h"
 
 #include "accountmanager.h"
 #include "owncloudgui.h"
@@ -12,8 +12,9 @@
 #include "logger.h"
 #include "guiutility.h"
 #include "syncfileitem.h"
-#include "tray/ActivityListModel.h"
-#include "tray/NotificationCache.h"
+#include "tray/activitylistmodel.h"
+#include "tray/notificationcache.h"
+#include "tray/unifiedsearchresultslistmodel.h"
 #include "userstatusconnector.h"
 
 #include <QDesktopServices>
@@ -38,7 +39,8 @@ User::User(AccountStatePtr &account, const bool &isCurrent, QObject *parent)
     : QObject(parent)
     , _account(account)
     , _isCurrentUser(isCurrent)
-    , _activityModel(new ActivityListModel(_account.data()))
+    , _activityModel(new ActivityListModel(_account.data(), this))
+    , _unifiedSearchResultsModel(new UnifiedSearchResultsListModel(_account.data(), this))
     , _notificationRequestsRunning(0)
 {
     connect(ProgressDispatcher::instance(), &ProgressDispatcher::progressInfo,
@@ -563,6 +565,11 @@ AccountPtr User::account() const
     return _account->account();
 }
 
+AccountStatePtr User::accountState() const
+{
+    return _account;
+}
+
 void User::setCurrentUser(const bool &isCurrent)
 {
     _isCurrentUser = isCurrent;
@@ -582,6 +589,11 @@ Folder *User::getFolder() const
 ActivityListModel *User::getActivityModel()
 {
     return _activityModel;
+}
+
+UnifiedSearchResultsListModel *User::getUnifiedSearchResultsListModel() const
+{
+    return _unifiedSearchResultsModel;
 }
 
 void User::openLocalFolder()

@@ -310,6 +310,9 @@ void selectiveSyncFixup(OCC::SyncJournalDb *journal, const QStringList &newList)
 
 int main(int argc, char **argv)
 {
+#ifdef Q_OS_WIN
+    SetDllDirectory(L"");
+#endif
     QCoreApplication app(argc, argv);
 
 #ifdef Q_OS_WIN
@@ -350,7 +353,7 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    QUrl hostUrl = QUrl::fromUserInput(options.target_url);
+    QUrl hostUrl = QUrl::fromUserInput((options.target_url.endsWith(QLatin1Char('/')) || options.target_url.endsWith(QLatin1Char('\\'))) ? options.target_url.chopped(1) : options.target_url);
 
     // Order of retrieval attempt (later attempts override earlier ones):
     // 1. From URL
@@ -480,7 +483,7 @@ restart_sync:
             qCritical() << "Could not open file containing the list of unsynced folders: " << options.unsyncedfolders;
         } else {
             // filter out empty lines and comments
-            selectiveSyncList = QString::fromUtf8(f.readAll()).split('\n').filter(QRegExp("\\S+")).filter(QRegExp("^[^#]"));
+            selectiveSyncList = QString::fromUtf8(f.readAll()).split('\n').filter(QRegularExpression("\\S+")).filter(QRegularExpression("^[^#]"));
 
             for (int i = 0; i < selectiveSyncList.count(); ++i) {
                 if (!selectiveSyncList.at(i).endsWith(QLatin1Char('/'))) {

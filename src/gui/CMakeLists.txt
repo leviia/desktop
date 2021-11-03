@@ -42,8 +42,17 @@ set(client_UI_SRCS
     UserStatusSelectorDialog.qml
     tray/ActivityActionButton.qml
     tray/ActivityItem.qml
+    tray/ActivityList.qml
     tray/Window.qml
     tray/UserLine.qml
+    tray/UnifiedSearchInputContainer.qml
+    tray/UnifiedSearchResultFetchMoreTrigger.qml
+    tray/UnifiedSearchResultItem.qml
+    tray/UnifiedSearchResultItemSkeleton.qml
+    tray/UnifiedSearchResultItemSkeletonContainer.qml
+    tray/UnifiedSearchResultListItem.qml
+    tray/UnifiedSearchResultNothingFound.qml
+    tray/UnifiedSearchResultSectionItem.qml
     wizard/flow2authwidget.ui
     wizard/owncloudadvancedsetuppage.ui
     wizard/owncloudconnectionmethoddialog.ui
@@ -113,11 +122,16 @@ set(client_SRCS
     remotewipe.cpp
     userstatusselectormodel.cpp
     emojimodel.cpp
-    tray/ActivityData.cpp
-    tray/ActivityListModel.cpp
-    tray/UserModel.cpp
-    tray/NotificationHandler.cpp
-    tray/NotificationCache.cpp
+    fileactivitylistmodel.cpp
+    tray/syncstatussummary.cpp
+    tray/activitydata.cpp
+    tray/activitylistmodel.cpp
+    tray/unifiedsearchresult.cpp
+    tray/unifiedsearchresultimageprovider.cpp
+    tray/unifiedsearchresultslistmodel.cpp
+    tray/usermodel.cpp
+    tray/notificationhandler.cpp
+    tray/notificationcache.cpp
     creds/credentialsfactory.cpp
     creds/httpcredentialsgui.cpp
     creds/oauth.cpp
@@ -604,12 +618,12 @@ if(BUILD_OWNCLOUD_OSX_BUNDLE AND NOT BUILD_LIBRARIES_ONLY)
         set(NO_STRIP "")
     endif()
 
-    add_custom_command(TARGET ${APPLICATION_EXECUTABLE} POST_BUILD
+    add_custom_command(TARGET nextcloud POST_BUILD
         COMMAND "${MACDEPLOYQT_EXECUTABLE}"
-        "$<TARGET_FILE_DIR:${APPLICATION_EXECUTABLE}>/../.."
+        "$<TARGET_FILE_DIR:nextcloud>/../.."
         -qmldir=${CMAKE_SOURCE_DIR}/src/gui
         -always-overwrite
-        -executable="$<TARGET_FILE_DIR:${APPLICATION_EXECUTABLE}>/${cmd_NAME}"
+        -executable="$<TARGET_FILE_DIR:nextcloud>/${cmd_NAME}"
         ${NO_STRIP}
         COMMAND "${CMAKE_COMMAND}"
         -E rm -rf "${BIN_OUTPUT_DIRECTORY}/${OWNCLOUD_OSX_BUNDLE}/Contents/PlugIns/bearer"

@@ -156,7 +156,37 @@ QUrl Theme::statusAwayImageSource() const
 
 QUrl Theme::statusInvisibleImageSource() const
 {
-    return imagePathToUrl(themeImagePath("user-status-invisible", 16));
+    return imagePathToUrl(themeImagePath("user-status-invisible", 64));
+}
+
+QUrl Theme::syncStatusOk() const
+{
+    return imagePathToUrl(themeImagePath("state-ok", 16));
+}
+
+QUrl Theme::syncStatusError() const
+{
+    return imagePathToUrl(themeImagePath("state-error", 16));
+}
+
+QUrl Theme::syncStatusRunning() const
+{
+    return imagePathToUrl(themeImagePath("state-sync", 16));
+}
+
+QUrl Theme::syncStatusPause() const
+{
+    return imagePathToUrl(themeImagePath("state-pause", 16));
+}
+
+QUrl Theme::syncStatusWarning() const
+{
+    return imagePathToUrl(themeImagePath("state-warning", 16));
+}
+
+QUrl Theme::folderOffline() const
+{
+    return imagePathToUrl(themeImagePath("state-offline"));
 }
 
 QString Theme::version() const
@@ -363,6 +393,24 @@ QString Theme::overrideServerUrl() const
 bool Theme::forceOverrideServerUrl() const
 {
 #ifdef APPLICATION_SERVER_URL_ENFORCE
+    return true;
+#else
+    return false;
+#endif
+}
+
+bool Theme::enableStaplingOCSP() const
+{
+#ifdef APPLICATION_OCSP_STAPLING_ENABLED
+    return true;
+#else
+    return false;
+#endif
+}
+
+bool Theme::forbidBadSSL() const
+{
+#ifdef APPLICATION_FORBID_BAD_SSL
     return true;
 #else
     return false;
@@ -809,6 +857,21 @@ bool Theme::showVirtualFilesOption() const
 {
     const auto vfsMode = bestAvailableVfsMode();
     return ConfigFile().showExperimentalOptions() || vfsMode == Vfs::WindowsCfApi;
+}
+
+QColor Theme::errorBoxTextColor() const
+{
+    return QColor{"white"};
+}
+
+QColor Theme::errorBoxBackgroundColor() const
+{
+    return QColor{"red"};
+}
+
+QColor Theme::errorBoxBorderColor() const
+{ 
+    return QColor{"black"};
 }
 
 } // end namespace client

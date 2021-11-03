@@ -389,6 +389,8 @@ QSslConfiguration Account::getOrCreateSslConfig()
     sslConfig.setSslOption(QSsl::SslOptionDisableSessionSharing, false);
     sslConfig.setSslOption(QSsl::SslOptionDisableSessionPersistence, false);
 
+    sslConfig.setOcspStaplingEnabled(Theme::instance()->enableStaplingOCSP());
+
     return sslConfig;
 }
 
@@ -455,6 +457,9 @@ void Account::slotHandleSslErrors(QNetworkReply *reply, QList<QSslError> errors)
                      << error.errorString() << "(" << error.error() << ")"
                      << "\n";
     }
+
+    qCInfo(lcAccount()) << "ssl errors" << out;
+    qCInfo(lcAccount()) << reply->sslConfiguration().peerCertificateChain();
 
     bool allPreviouslyRejected = true;
     foreach (const QSslError &error, errors) {

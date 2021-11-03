@@ -178,7 +178,7 @@ Application::Application(int &argc, char **argv)
     , _showLogWindow(false)
     , _logExpire(0)
     , _logFlush(false)
-    , _logDebug(false)
+    , _logDebug(true)
     , _userTriggeredConnect(false)
     , _debugMode(false)
     , _backgroundMode(false)
@@ -348,6 +348,9 @@ Application::Application(int &argc, char **argv)
 
     connect(FolderMan::instance()->socketApi(), &SocketApi::shareCommandReceived,
         _gui.data(), &ownCloudGui::slotShowShareDialog);
+
+    connect(FolderMan::instance()->socketApi(), &SocketApi::fileActivityCommandReceived,
+        Systray::instance(), &Systray::showFileActivityDialog);
 
     // startup procedure.
     connect(&_checkConnectionTimer, &QTimer::timeout, this, &Application::slotCheckConnection);
