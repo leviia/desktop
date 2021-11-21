@@ -20,6 +20,9 @@ if(UNIX AND NOT APPLE)
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -fPIE")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fPIE")
   set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -pie")
+
+  configure_file(${CMAKE_SOURCE_DIR}/cmd.desktop.in ${CMAKE_CURRENT_BINARY_DIR}/cmd.desktop)
+  install(FILES  ${CMAKE_CURRENT_BINARY_DIR}/cmd.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications )
 endif()
 
 if(CMAKE_SYSTEM_NAME STREQUAL "FreeBSD")
