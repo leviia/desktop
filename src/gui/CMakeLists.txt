@@ -1,5 +1,8 @@
 project(gui)
-find_package(Qt5 REQUIRED COMPONENTS Widgets Svg Qml Quick QuickControls2)
+find_package(Qt5 REQUIRED COMPONENTS Widgets Svg Qml Quick QuickControls2 Xml Network)
+if (NOT TARGET Qt5::GuiPrivate)
+    message(FATAL_ERROR "Could not find GuiPrivate component of Qt5. It might be shipped as a separate package, please check that.")
+endif()
 
 if(CMAKE_BUILD_TYPE MATCHES Debug)
     add_definitions(-DQT_QML_DEBUG)
@@ -100,6 +103,7 @@ set(client_SRCS
     sharelinkwidget.cpp
     sharemanager.cpp
     shareusergroupwidget.cpp
+    profilepagewidget.cpp
     sharee.cpp
     sslbutton.cpp
     sslerrordialog.cpp
@@ -117,12 +121,12 @@ set(client_SRCS
     guiutility.cpp
     elidedlabel.cpp
     headerbanner.cpp
-    iconjob.cpp
     iconutils.cpp
     remotewipe.cpp
     userstatusselectormodel.cpp
     emojimodel.cpp
     fileactivitylistmodel.cpp
+    tray/svgimageprovider.cpp
     tray/syncstatussummary.cpp
     tray/activitydata.cpp
     tray/activitylistmodel.cpp
@@ -204,6 +208,7 @@ set(3rdparty_SRC
     ../3rdparty/qtsingleapplication/qtsingleapplication.cpp
     ../3rdparty/qtsingleapplication/qtsinglecoreapplication.cpp
     ../3rdparty/kmessagewidget/kmessagewidget.cpp
+    ../3rdparty/kirigami/wheelhandler.cpp
    )
 
 if(NOT WIN32)
@@ -475,6 +480,7 @@ target_include_directories(nextcloudCore
   PUBLIC
   ${CMAKE_SOURCE_DIR}/src/3rdparty/QProgressIndicator
   ${CMAKE_SOURCE_DIR}/src/3rdparty/qtlockedfile
+  ${CMAKE_SOURCE_DIR}/src/3rdparty/kirigami
   ${CMAKE_SOURCE_DIR}/src/3rdparty/qtsingleapplication
   ${CMAKE_SOURCE_DIR}/src/3rdparty/kmessagewidget
   ${CMAKE_CURRENT_BINARY_DIR}

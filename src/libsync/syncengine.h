@@ -134,6 +134,8 @@ public:
      */
     static void wipeVirtualFiles(const QString &localPath, SyncJournalDb &journal, Vfs &vfs);
 
+    static void switchToVirtualFiles(const QString &localPath, SyncJournalDb &journal, Vfs &vfs);
+
     auto getPropagator() { return _propagator; } // for the test
 
 signals:
@@ -238,6 +240,8 @@ private:
     SyncJournalDb *_journal;
     QScopedPointer<DiscoveryPhase> _discoveryPhase;
     QSharedPointer<OwncloudPropagator> _propagator;
+
+    QSet<QString> _bulkUploadBlackList;
 
     // List of all files with conflicts
     QSet<QString> _seenConflictFiles;

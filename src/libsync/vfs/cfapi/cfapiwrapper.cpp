@@ -586,13 +586,18 @@ OCC::CfApiWrapper::FileHandle OCC::CfApiWrapper::handleForPath(const QString &pa
         return {};
     }
 
-    if (QFileInfo(path).isDir()) {
+    QFileInfo pathFileInfo(path);
+    if (!pathFileInfo.exists()) {
+        return {};
+    }
+
+    if (pathFileInfo.isDir()) {
         HANDLE handle = nullptr;
         const qint64 openResult = CfOpenFileWithOplock(path.toStdWString().data(), CF_OPEN_FILE_FLAG_NONE, &handle);
         if (openResult == S_OK) {
             return {handle, [](HANDLE h) { CfCloseHandle(h); }};
         }
-    } else {
+    } else if (pathFileInfo.isFile()) {
         const auto longpath = OCC::FileSystem::longWinPath(path);
         const auto handle = CreateFile(longpath.toStdWString().data(), 0, 0, nullptr,
                                        OPEN_EXISTING, FILE_ATTRIBUTE_NORMAL, nullptr);
@@ -702,13 +707,14 @@ OCC::Result<OCC::Vfs::ConvertToPlaceholderResult, QString> OCC::CfApiWrapper::up
     OCC::Utility::UnixTimeToLargeIntegerFiletime(modtime, &metadata.BasicInfo.LastWriteTime);
     OCC::Utility::UnixTimeToLargeIntegerFiletime(modtime, &metadata.BasicInfo.LastAccessTime);
     OCC::Utility::UnixTimeToLargeIntegerFiletime(modtime, &metadata.BasicInfo.ChangeTime);
+    metadata.BasicInfo.FileAttributes = 0;
 
     const qint64 result = CfUpdatePlaceholder(handle.get(), &metadata,
                                               fileIdentity.data(), sizeToDWORD(fileIdentitySize),
                                               nullptr, 0, CF_UPDATE_FLAG_MARK_IN_SYNC, nullptr, nullptr);
 
     if (result != S_OK) {
-        qCWarning(lcCfApiWrapper) << "Couldn't update placeholder info for" << pathForHandle(handle) << ":" << QString::fromWCharArray(_com_error(result).ErrorMessage());
+        qCWarning(lcCfApiWrapper) << "Couldn't update placeholder info for" << pathForHandle(handle) << ":" << QString::fromWCharArray(_com_error(result).ErrorMessage()) << replacesPath;
         return { "Couldn't update placeholder info" };
     }
 

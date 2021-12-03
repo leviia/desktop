@@ -29,6 +29,7 @@ set(libsync_SRCS
     configfile.cpp
     abstractnetworkjob.cpp
     networkjobs.cpp
+    iconjob.cpp
     owncloudpropagator.cpp
     nextcloudtheme.cpp
     abstractpropagateremotedeleteencrypted.cpp
@@ -39,6 +40,8 @@ set(libsync_SRCS
     propagateupload.cpp
     propagateuploadv1.cpp
     propagateuploadng.cpp
+    bulkpropagatorjob.cpp
+    putmultifilejob.cpp
     propagateremotedelete.cpp
     propagateremotedeleteencrypted.cpp
     propagateremotedeleteencryptedrootfolder.cpp
@@ -58,6 +61,7 @@ set(libsync_SRCS
     datetimeprovider.cpp
     ocsuserstatusconnector.cpp
     userstatusconnector.cpp
+    ocsprofileconnector.cpp
     creds/dummycredentials.cpp
     creds/abstractcredentials.cpp
     creds/credentialscommon.cpp

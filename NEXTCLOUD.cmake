@@ -71,6 +71,7 @@ option( BUILD_UPDATER "Build updater" OFF )
 
 option( WITH_PROVIDERS "Build with providers list" ON )
 
+option( ENFORCE_VIRTUAL_FILES_SYNC_FOLDER "Enforce use of virtual files sync folder when available" OFF )
 
 ## Theming options
 set( APPLICATION_WIZARD_HEADER_BACKGROUND_COLOR ${NEXTCLOUD_BACKGROUND_COLOR} )

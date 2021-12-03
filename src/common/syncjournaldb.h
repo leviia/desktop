@@ -70,7 +70,6 @@ public:
 
     void keyValueStoreSet(const QString &key, QVariant value);
     qint64 keyValueStoreGetInt(const QString &key, qint64 defaultValue);
-    QVariant keyValueStoreGet(const QString &key, QVariant defaultValue = {});
     void keyValueStoreDelete(const QString &key);
 
     bool deleteFileRecord(const QString &filename, bool recursively = false);

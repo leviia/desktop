@@ -487,7 +487,7 @@ void ProcessDirectoryJob::processFileAnalyzeRemoteInfo(
         if (serverEntry.size == -1)
             missingData.append(tr("size"));
         if (serverEntry.remotePerm.isNull())
-            missingData.append(tr("permissions"));
+            missingData.append(tr("permission"));
         if (serverEntry.etag.isEmpty())
             missingData.append("ETag");
         if (serverEntry.fileId.isEmpty())
@@ -495,7 +495,7 @@ void ProcessDirectoryJob::processFileAnalyzeRemoteInfo(
         if (!missingData.isEmpty()) {
             item->_instruction = CSYNC_INSTRUCTION_ERROR;
             _childIgnored = true;
-            item->_errorString = tr("server reported no %1").arg(missingData.join(QLatin1String(", ")));
+            item->_errorString = tr("Server reported no %1").arg(missingData.join(QLatin1String(", ")));
             emit _discoveryData->itemDiscovered(item);
             return;
         }
@@ -1000,6 +1000,11 @@ void ProcessDirectoryJob::processFileAnalyzeLocalInfo(
             return;
         }
 
+        if (localEntry.isDirectory && _discoveryData->_syncOptions._vfs->mode() != Vfs::WindowsCfApi) {
+            // for VFS folders on Windows only
+            return;
+        }
+
         Q_ASSERT(item->_instruction == CSYNC_INSTRUCTION_NEW);
         if (item->_instruction != CSYNC_INSTRUCTION_NEW) {
             qCWarning(lcDisco) << "Trying to wipe a virtual item" << path._local << " with item->_instruction" << item->_instruction;
@@ -1043,6 +1048,12 @@ void ProcessDirectoryJob::processFileAnalyzeLocalInfo(
         if (isOnlineOnlyFolder) {
             // if we're wiping a folder, we will only get this function called once and will wipe a folder along with it's files and also display one error in GUI
             qCInfo(lcDisco) << "Wiping virtual folder without db entry for" << path._local;
+            if (isfolderPlaceHolderAvailabilityOnlineOnly && folderPlaceHolderAvailability.isValid()) {
+                qCInfo(lcDisco) << "*folderPlaceHolderAvailability:" << *folderPlaceHolderAvailability;
+            }
+            if (isFolderPinStateOnlineOnly && folderPinState.isValid()) {
+                qCInfo(lcDisco) << "*folderPinState:" << *folderPinState;
+            }
             emit _discoveryData->addErrorToGui(SyncFileItem::SoftError, tr("Conflict when uploading a folder. It's going to get cleared!"), path._local);
         } else {
             qCInfo(lcDisco) << "Wiping virtual file without db entry for" << path._local;

@@ -15,6 +15,7 @@
 
 #include "syncengine.h"
 #include "account.h"
+#include "common/filesystembase.h"
 #include "owncloudpropagator.h"
 #include "common/syncjournaldb.h"
 #include "common/syncjournalfilerecord.h"
@@ -53,6 +54,7 @@
 #include <QSslCertificate>
 #include <QProcess>
 #include <QElapsedTimer>
+#include <QFileInfo>
 #include <qtextcodec.h>
 
 namespace OCC {
@@ -709,7 +711,7 @@ void SyncEngine::slotDiscoveryFinished()
         _journal->commit(QStringLiteral("post treewalk"));
 
         _propagator = QSharedPointer<OwncloudPropagator>(
-            new OwncloudPropagator(_account, _localPath, _remotePath, _journal));
+            new OwncloudPropagator(_account, _localPath, _remotePath, _journal, _bulkUploadBlackList));
         _propagator->setSyncOptions(_syncOptions);
         connect(_propagator.data(), &OwncloudPropagator::itemCompleted,
             this, &SyncEngine::slotItemCompleted);
@@ -1017,6 +1019,24 @@ void SyncEngine::wipeVirtualFiles(const QString &localPath, SyncJournalDb &journ
 
     // Postcondition: No ItemTypeVirtualFile / ItemTypeVirtualFileDownload left in the db.
     // But hydrated placeholders may still be around.
+}
+
+void SyncEngine::switchToVirtualFiles(const QString &localPath, SyncJournalDb &journal, Vfs &vfs)
+{
+    qCInfo(lcEngine) << "Convert to virtual files inside" << localPath;
+    journal.getFilesBelowPath({}, [&](const SyncJournalFileRecord &rec) {
+        const auto path = rec.path();
+        const auto fileName = QFileInfo(path).fileName();
+        if (FileSystem::isExcludeFile(fileName)) {
+            return;
+        }
+        SyncFileItem item;
+        QString localFile = localPath + path;
+        const auto result = vfs.convertToPlaceholder(localFile, item, localFile);
+        if (!result.isValid()) {
+            qCWarning(lcEngine) << "Could not convert file to placeholder" << result.error();
+        }
+    });
 }
 
 void SyncEngine::abort()
