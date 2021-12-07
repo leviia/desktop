@@ -15,7 +15,6 @@ set( APPLICATION_REV_DOMAIN     "com.leviia.desktopclient" )
 set( APPLICATION_VIRTUALFILE_SUFFIX "leviia" )
 
 set( LINUX_PACKAGE_SHORTNAME "leviia" )
-set( LINUX_APPLICATION_ID "${APPLICATION_REV_DOMAIN}.${LINUX_PACKAGE_SHORTNAME}")
 
 set( NEXTCLOUD_BACKGROUND_COLOR "#00bc73" )
 
@@ -36,6 +35,8 @@ if(__cmp)
 else()
     set(BRANDING_VALUE "default")
 endif()
+
+set( LINUX_APPLICATION_ID "${APPLICATION_REV_DOMAIN}.${LINUX_PACKAGE_SHORTNAME}")
 
 file(COPY ${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/banner.bmp DESTINATION ${CMAKE_SOURCE_DIR}/admin/win/msi/gui/)
 file(COPY ${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/dialog.bmp DESTINATION ${CMAKE_SOURCE_DIR}/admin/win/msi/gui/)
