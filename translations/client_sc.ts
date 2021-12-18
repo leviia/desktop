@@ -1,4 +1,4 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sc" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="sc">
 <context>
     <name>ActivityActionButton</name>
     <message>
@@ -305,9 +305,9 @@
     </message>
     <message>
         <location filename="../src/gui/accountsettings.ui" line="70"/>
-        <location filename="../src/gui/accountsettings.cpp" line="761"/>
-        <location filename="../src/gui/accountsettings.cpp" line="873"/>
-        <location filename="../src/gui/accountsettings.cpp" line="1362"/>
+        <location filename="../src/gui/accountsettings.cpp" line="762"/>
+        <location filename="../src/gui/accountsettings.cpp" line="874"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1363"/>
         <source>Cancel</source>
         <translation>Annulla</translation>
     </message>
@@ -495,52 +495,52 @@ Iseta sa sincronizatzione noa, tando tzifra·dda.</translation>
         <translation>Boga sa connessione pro sincronizare is cartellas</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="594"/>
+        <location filename="../src/gui/accountsettings.cpp" line="595"/>
         <source>Disable virtual file support …</source>
         <translation>Disativa assistèntzia de is archìvios virtuales ...</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="603"/>
+        <location filename="../src/gui/accountsettings.cpp" line="604"/>
         <source>Enable virtual file support %1 …</source>
         <translation>Ativa assistèntzia de is archìvios virtuales %1 …</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="603"/>
+        <location filename="../src/gui/accountsettings.cpp" line="604"/>
         <source>(experimental)</source>
         <translation>(isperimentale)</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="696"/>
+        <location filename="../src/gui/accountsettings.cpp" line="697"/>
         <source>Folder creation failed</source>
         <translation>Creatzione cartella faddida</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="697"/>
+        <location filename="../src/gui/accountsettings.cpp" line="698"/>
         <source>&lt;p&gt;Could not create local folder &lt;i&gt;%1&lt;/i&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;No at fatu a creare una cartella locale  &lt;i&gt;%1&lt;/i&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="752"/>
+        <location filename="../src/gui/accountsettings.cpp" line="753"/>
         <source>Confirm Folder Sync Connection Removal</source>
         <translation>Cunfirma bogadura connessione de sincronizatzione cartellas</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="753"/>
+        <location filename="../src/gui/accountsettings.cpp" line="754"/>
         <source>&lt;p&gt;Do you really want to stop syncing the folder &lt;i&gt;%1&lt;/i&gt;?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; This will &lt;b&gt;not&lt;/b&gt; delete any files.&lt;/p&gt;</source>
         <translation>&lt;p&gt;A beru boles firmare sa sincronizatzione de is cartellas &lt;i&gt;%1&lt;/i&gt;?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Mira:&lt;/b&gt; custa operatzione &lt;b&gt;no&lt;/b&gt; at a cantzellare perunu archìviu.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="760"/>
+        <location filename="../src/gui/accountsettings.cpp" line="761"/>
         <source>Remove Folder Sync Connection</source>
         <translation>Boga connessione de sincronizatzione cartellas</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="864"/>
+        <location filename="../src/gui/accountsettings.cpp" line="865"/>
         <source>Disable virtual file support?</source>
         <translation>Boles disativare s&apos;assistèntzia de is archìvios virtuales?</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="865"/>
+        <location filename="../src/gui/accountsettings.cpp" line="866"/>
         <source>This action will disable virtual file support. As a consequence contents of folders that are currently marked as &quot;available online only&quot; will be downloaded.
 
 The only advantage of disabling virtual file support is that the selective sync feature will become available again.
@@ -553,37 +553,37 @@ S&apos;ùnicu profetu de disativare su suportu de is archìvios virtuales est ch
 Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="872"/>
+        <location filename="../src/gui/accountsettings.cpp" line="873"/>
         <source>Disable support</source>
         <translation>Disativa suportu</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="990"/>
+        <location filename="../src/gui/accountsettings.cpp" line="991"/>
         <source>Sync Running</source>
         <translation>Sincronizatzione in esecutzione</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="991"/>
+        <location filename="../src/gui/accountsettings.cpp" line="992"/>
         <source>The syncing operation is running.&lt;br/&gt;Do you want to terminate it?</source>
         <translation>Sa sincronizatzione est in esecutzione.&lt;br/&gt; cheres a dda terminare?</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1074"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1075"/>
         <source>%1 (%3%) of %2 in use. Some folders, including network mounted or shared folders, might have different limits.</source>
         <translation>%1 (%3%) de %2 impreadu. Calicuna cartella, incluende cuddas montadas in sa rete o cuddas cumpartzidas, diant àere barrancos diferentes.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1075"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1076"/>
         <source>%1 of %2 in use</source>
         <translation>%1 de %2 impreados</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1084"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1085"/>
         <source>Currently there is no storage usage information available.</source>
         <translation>Immoe non ddoe at informatziones a disponimentu subra de s&apos;impreu de s&apos;ispàtziu de archiviatzione.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1087"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1088"/>
         <source>%1 in use</source>
         <translation>%1 impreados</translation>
     </message>
@@ -603,87 +603,87 @@ Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</
         <translation>Intra</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1114"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1115"/>
         <source>%1 as %2</source>
         <translation>%1 comente %2</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1121"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1122"/>
         <source>The server version %1 is unsupported! Proceed at your own risk.</source>
         <translation>Sa versione %1 de su serbidore non est suportada! Sighi a arriscu tuo.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1123"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1124"/>
         <source>Connected to %1.</source>
         <translation>Connètidu a %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1127"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1128"/>
         <source>Server %1 is temporarily unavailable.</source>
         <translation>Su serbidore %1 pro immoe no est a disponimentu.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1130"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1131"/>
         <source>Server %1 is currently in maintenance mode.</source>
         <translation>Su serbidore %1 pro immoe en in modalidade de mantenidura.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1133"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1134"/>
         <source>Signed out from %1.</source>
         <translation>Disconnètidu dae %1.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1143"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1144"/>
         <source>Obtaining authorization from the browser. &lt;a href=&apos;%1&apos;&gt;Click here&lt;/a&gt; to re-open the browser.</source>
         <translation>Otenimentu de su permissu dae su navigadore. &lt;a href=&apos;%1&apos;&gt;Incarca inoghe&lt;/a&gt; pro torrare a abèrrere su navigadore.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1147"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1148"/>
         <source>Connecting to %1 …</source>
         <translation>Connetende·si a %1 …</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1152"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1153"/>
         <source>No connection to %1 at %2.</source>
         <translation>Peruna connessione a %1 in %2.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1157"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1158"/>
         <source>Server configuration error: %1 at %2.</source>
         <translation>Ddoe at àpidu un&apos;errore in su serbidore: %1 in %2.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1168"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1169"/>
         <source>No %1 connection configured.</source>
         <translation>Perunu connessione %1 configurada.</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1340"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1341"/>
         <source>There are folders that were not synchronized because they are too big: </source>
         <translation>Ddoe at cartellas chi non sunt istadas sincronizadas ca sunt tropu mannas:</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1342"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1343"/>
         <source>There are folders that were not synchronized because they are external storages: </source>
         <translation>Ddoe at cartellas chi non sunt istadas sincronizadas ca in foras ddoe at memòrias de archiviatzione:</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1343"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1344"/>
         <source>There are folders that were not synchronized because they are too big or external storages: </source>
         <translation>Ddoe at cartellas chi non sunt istadas sincronizadas ca sunt tropu mannas o memòrias de archiviatziones de foras:</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1355"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1356"/>
         <source>Confirm Account Removal</source>
         <translation>Cunfirma bogadura contu</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1356"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1357"/>
         <source>&lt;p&gt;Do you really want to remove the connection to the account &lt;i&gt;%1&lt;/i&gt;?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Note:&lt;/b&gt; This will &lt;b&gt;not&lt;/b&gt; delete any files.&lt;/p&gt;</source>
         <translation>&lt;p&gt;A beru nche boles bogare sa connessione a su contu &lt;i&gt;%1&lt;/i&gt;?&lt;/p&gt;&lt;p&gt;&lt;b&gt;Nota:&lt;/b&gt; Custu &lt;b&gt;no&lt;/b&gt; at a cantzellare perunu archìviu.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/gui/accountsettings.cpp" line="1361"/>
+        <location filename="../src/gui/accountsettings.cpp" line="1362"/>
         <source>Remove connection</source>
         <translation>Boga connessione</translation>
     </message>
@@ -881,43 +881,44 @@ Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="271"/>
-        <source>File removed (start upload) %1</source>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="169"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="302"/>
+        <source>File %1 has invalid modified time. Do not upload to the server.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="271"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="293"/>
         <source>File Removed (start upload) %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="281"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="310"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="292"/>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="618"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="324"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="637"/>
         <source>Local file changed during sync.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="422"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="456"/>
         <source>Error updating metadata: %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="425"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="459"/>
         <source>The file %1 is currently in use</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="601"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="620"/>
         <source>The local file was removed during sync.</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="648"/>
+        <location filename="../src/libsync/bulkpropagatorjob.cpp" line="667"/>
         <source>; Restoration Failed: %1</source>
         <translation type="unfinished"/>
     </message>
@@ -925,7 +926,7 @@ Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</
 <context>
     <name>OCC::CleanupPollsJob</name>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1305"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1316"/>
         <source>Error writing metadata to the database</source>
         <translation>DDoe at àpidu un&apos;errore iscriende metadatos in sa base de datos</translation>
     </message>
@@ -1104,6 +1105,19 @@ Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</
     </message>
 </context>
 <context>
+    <name>OCC::DiscoveryPhase</name>
+    <message>
+        <location filename="../src/libsync/discoveryphase.cpp" line="189"/>
+        <source>Error while canceling delete of a file</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/libsync/discoveryphase.cpp" line="190"/>
+        <source>Error while canceling delete of %1</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OCC::DiscoverySingleDirectoryJob</name>
     <message>
         <location filename="../src/libsync/discoveryphase.cpp" line="398"/>
@@ -1111,8 +1125,8 @@ Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</
         <translation>Sa risposta de su rilevamentu de s&apos;archìviu de su serbidore at rispostu chi mancant datos.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discoveryphase.cpp" line="503"/>
-        <location filename="../src/libsync/discoveryphase.cpp" line="528"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="505"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="530"/>
         <source>Server error: PROPFIND reply is not XML formatted!</source>
         <translation>Errore de su serbidore: sa risposta PROPFIND no est in formadu XML!</translation>
     </message>
@@ -1120,27 +1134,27 @@ Custa atzione at a firmare cale si siat sincronizatzione immoe in esecutzione.</
 <context>
     <name>OCC::DiscoverySingleLocalDirectoryJob</name>
     <message>
-        <location filename="../src/libsync/discoveryphase.cpp" line="262"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="264"/>
         <source>Error while opening directory %1</source>
         <translation>Ddoe at àpidu un&apos;errore aberende sa cartella %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discoveryphase.cpp" line="264"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="266"/>
         <source>Directory not accessible on client, permission denied</source>
         <translation>Non faghet a intrare a sa cartella in su cliente, permissu negadu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discoveryphase.cpp" line="268"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="270"/>
         <source>Directory not found: %1</source>
         <translation>Cartella no agatada: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discoveryphase.cpp" line="299"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="301"/>
         <source>Filename encoding is not valid</source>
         <translation>Sa codìfica de su nùmene de s&apos;archìviu no est vàlida</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discoveryphase.cpp" line="318"/>
+        <location filename="../src/libsync/discoveryphase.cpp" line="320"/>
         <source>Error while reading directory %1</source>
         <translation>Ddoe at àpidu un&apos;errore leghende sa cartella %1</translation>
     </message>
@@ -1354,41 +1368,41 @@ Custu podet èssere un&apos;errore de is librerias tuas OpenSSL.</translation>
         <translation>Atividade de sincronizatzione</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="833"/>
+        <location filename="../src/gui/folder.cpp" line="842"/>
         <source>Could not read system exclude file</source>
         <translation>No at fatu a lèghere s&apos;archìviu de esclusione de su sistema</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1100"/>
+        <location filename="../src/gui/folder.cpp" line="1109"/>
         <source>A new folder larger than %1 MB has been added: %2.
 </source>
         <translation>Una cartella noa prus manna de %1 MB est istada agiunta: %2.
 </translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1103"/>
+        <location filename="../src/gui/folder.cpp" line="1112"/>
         <source>A folder from an external storage has been added.
 </source>
         <translation>Una cartella noa est istada agiunta dae una memòria de dae un&apos;archiviatzione de foras.
 </translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1104"/>
+        <location filename="../src/gui/folder.cpp" line="1113"/>
         <source>Please go in the settings to select it if you wish to download it.</source>
         <translation>Pro praghere, bae a is impostatziones pro dda seletzionare si dda boles iscarrigare.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1164"/>
+        <location filename="../src/gui/folder.cpp" line="1173"/>
         <source>The folder %1 was created but was excluded from synchronization previously. Data inside it will not be synchronized.</source>
         <translation>Sa cartella %1 est istada creada, ma in antis est istada lassada in foras de sa sincronizatzione, Is datos in intro no ant a èssere sincronizados.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1167"/>
+        <location filename="../src/gui/folder.cpp" line="1176"/>
         <source>The file %1 was created but was excluded from synchronization previously. It will not be synchronized.</source>
         <translation>S&apos;archìviu %1 est istadu creadu, ma in antis est istadu lassadu in foras de sa sincronizatzione. No at a èssere sincronizadu.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1178"/>
+        <location filename="../src/gui/folder.cpp" line="1187"/>
         <source>Changes in synchronized folders could not be tracked reliably.
 
 This means that the synchronization client might not upload local changes immediately and will instead only scan for local changes and upload them occasionally (every two hours by default).
@@ -1480,7 +1494,7 @@ Ses seguru chi boles sincronizare custas atziones cun su serbidore?
 Si custu fiat un&apos;errore e detzides de mantènnere is archìvios tuos, custos ddos at a torrare a sincronizare su serbidore.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1255"/>
+        <location filename="../src/gui/folder.cpp" line="1264"/>
         <source>All files in the sync folder &quot;%1&quot; folder were deleted on the server.
 These deletes will be synchronized to your local sync folder, making such files unavailable unless you have a right to restore. 
 If you decide to restore the files, they will be re-synced with the server if you have rights to do so.
@@ -1491,7 +1505,7 @@ Si detzides de ripristinare is archìvios, custos ant a èssere sincronizados to
 Si detzides de cantzellare is archìvios, non ant a èssere prus a disponimentu, francu chi sias tue su mere.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1260"/>
+        <location filename="../src/gui/folder.cpp" line="1269"/>
         <source>All the files in your local sync folder &quot;%1&quot; were deleted. These deletes will be synchronized with your server, making such files unavailable unless restored.
 Are you sure you want to sync those actions with the server?
 If this was an accident and you decide to keep your files, they will be re-synced from the server.</source>
@@ -1501,17 +1515,17 @@ Ses seguru chi boles sincronizare custas atziones cun su serbidore?
 Si custu fiat un&apos;errore e detzides de mantènnere is archìvios tuos, custos ddos at a torrare a sincronizare su serbidore.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1264"/>
+        <location filename="../src/gui/folder.cpp" line="1273"/>
         <source>Remove All Files?</source>
         <translation>Boles bogare totu is archìvios?</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1268"/>
+        <location filename="../src/gui/folder.cpp" line="1277"/>
         <source>Remove all files</source>
         <translation>Boga totu is archìvios?</translation>
     </message>
     <message>
-        <location filename="../src/gui/folder.cpp" line="1269"/>
+        <location filename="../src/gui/folder.cpp" line="1278"/>
         <source>Keep files</source>
         <translation>Mantene is archìvios</translation>
     </message>
@@ -1547,7 +1561,7 @@ Si custu fiat un&apos;errore e detzides de mantènnere is archìvios tuos, custo
 <context>
     <name>OCC::FolderMan</name>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="397"/>
+        <location filename="../src/gui/folderman.cpp" line="401"/>
         <source>Could not reset folder state</source>
         <translation>No at fatu a ripristinare s&apos;istadu de sa cartella</translation>
     </message>
@@ -1557,37 +1571,37 @@ Si custu fiat un&apos;errore e detzides de mantènnere is archìvios tuos, custo
         <translation>Agatadu unu registru betzu de archiviatzione &apos;%1&apos;, ma non faghet a ddu bogare. Pro praghere, segura·ti chi peruna aplicatzione ddu siat impreende.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="398"/>
+        <location filename="../src/gui/folderman.cpp" line="402"/>
         <source>An old sync journal &quot;%1&quot; was found, but could not be removed. Please make sure that no application is currently using it.</source>
         <translation>Agatadu unu registru betzu de archiviatzione &quot;%1&quot; ma non faghet a ddu bogare. Assegura•ti chi peruna aplicatzione siat impreende•ddu.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1246"/>
+        <location filename="../src/gui/folderman.cpp" line="1250"/>
         <source> (backup)</source>
         <translation> (còpia de seguresa)</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1251"/>
+        <location filename="../src/gui/folderman.cpp" line="1255"/>
         <source> (backup %1)</source>
         <translation> (còpia de seguresa %1)</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1496"/>
+        <location filename="../src/gui/folderman.cpp" line="1500"/>
         <source>Undefined State.</source>
         <translation>Istadu non definidu.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1499"/>
+        <location filename="../src/gui/folderman.cpp" line="1503"/>
         <source>Waiting to start syncing.</source>
         <translation>Isetende chi cumintzet sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1502"/>
+        <location filename="../src/gui/folderman.cpp" line="1506"/>
         <source>Preparing for sync.</source>
         <translation>Aprontende sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1505"/>
+        <location filename="../src/gui/folderman.cpp" line="1509"/>
         <source>Sync is running.</source>
         <translation>Sa sincronizatzione est aviada.</translation>
     </message>
@@ -1597,67 +1611,67 @@ Si custu fiat un&apos;errore e detzides de mantènnere is archìvios tuos, custo
         <translation>Sa sincronizatzione est andada bene, is cunflitos no isòrvidos ancora.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1510"/>
+        <location filename="../src/gui/folderman.cpp" line="1514"/>
         <source>Sync finished with unresolved conflicts.</source>
         <translation>Sincronizatzione agabbada cun cunflitos non isortos.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1512"/>
+        <location filename="../src/gui/folderman.cpp" line="1516"/>
         <source>Last Sync was successful.</source>
         <translation>S&apos;ùrtima sincronizatzione est andada bene.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1518"/>
+        <location filename="../src/gui/folderman.cpp" line="1522"/>
         <source>Setup Error.</source>
         <translation>Errore de cunfiguratzione</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1521"/>
+        <location filename="../src/gui/folderman.cpp" line="1525"/>
         <source>User Abort.</source>
         <translation>Firmadu dae s&apos;utente.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1524"/>
+        <location filename="../src/gui/folderman.cpp" line="1528"/>
         <source>Sync is paused.</source>
         <translation>Sa sincronizatzione est in pàusa.</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1530"/>
+        <location filename="../src/gui/folderman.cpp" line="1534"/>
         <source>%1 (Sync is paused)</source>
         <translation>%1 (Sincronizatzione in pàusa)</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1538"/>
+        <location filename="../src/gui/folderman.cpp" line="1542"/>
         <source>No valid folder selected!</source>
         <translation>Peruna cartella bàlida seletzionada!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1550"/>
+        <location filename="../src/gui/folderman.cpp" line="1554"/>
         <source>The selected path does not exist!</source>
         <translation>Su caminu seletzionadu non b&apos;est!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1554"/>
+        <location filename="../src/gui/folderman.cpp" line="1558"/>
         <source>The selected path is not a folder!</source>
         <translation>Su caminu seletzionadu non b&apos;est!!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1558"/>
+        <location filename="../src/gui/folderman.cpp" line="1562"/>
         <source>You have no permission to write to the selected folder!</source>
         <translation>Non tenes su permissu pro iscrìere in sa cartella seletzionada!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1605"/>
+        <location filename="../src/gui/folderman.cpp" line="1609"/>
         <source>The local folder %1 already contains a folder used in a folder sync connection. Please pick another one!</source>
         <translation>Sa cartella locale %1 cuntenet giai una cartella impreada in una connessione de sincronizatzione de is cartellas. Seletziona·nde un&apos;àtera!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1611"/>
+        <location filename="../src/gui/folderman.cpp" line="1615"/>
         <source>The local folder %1 is already contained in a folder used in a folder sync connection. Please pick another one!</source>
         <translation>Sa cartella locala %1 cuntenet giai una cartella impreada in una connessione de sincronizatzione de is cartellas. Seletziona·nde  un&apos;àtera!</translation>
     </message>
     <message>
-        <location filename="../src/gui/folderman.cpp" line="1625"/>
+        <location filename="../src/gui/folderman.cpp" line="1629"/>
         <source>There is already a sync from the server to this local folder. Please pick another local folder!</source>
         <translation>Esistet giai una sincronizatzione dae su serbidore a custa cartella locale. Seletziona·nde un&apos;àtera locale!</translation>
     </message>
@@ -3024,6 +3038,19 @@ privilègios in prus durante su protzessu.</translation>
     </message>
 </context>
 <context>
+    <name>OCC::OwncloudPropagator</name>
+    <message>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="776"/>
+        <source>Impossible to get modification time for file in conflict %1</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="776"/>
+        <source>Impossible to get modification time for file in conflict %1)</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>OCC::OwncloudSetupPage</name>
     <message>
         <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="48"/>
@@ -3404,12 +3431,12 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation>Su nùmene de s&apos;archìviu est in sa lista niedda de su serbidore.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="413"/>
+        <location filename="../src/libsync/discovery.cpp" line="419"/>
         <source>File has extension reserved for virtual files.</source>
         <translation>S&apos;archìviu at un&apos;estensione riservada a is archìvios virtuales.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="488"/>
+        <location filename="../src/libsync/discovery.cpp" line="494"/>
         <source>size</source>
         <translation>mannària</translation>
     </message>
@@ -3424,67 +3451,67 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation>su serbidore no at torradu perunu %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="490"/>
+        <location filename="../src/libsync/discovery.cpp" line="496"/>
         <source>permission</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="494"/>
+        <location filename="../src/libsync/discovery.cpp" line="500"/>
         <source>file id</source>
         <translation>id de s&apos;archìviu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="498"/>
+        <location filename="../src/libsync/discovery.cpp" line="504"/>
         <source>Server reported no %1</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1038"/>
+        <location filename="../src/libsync/discovery.cpp" line="1065"/>
         <source>Conflict when uploading some files to a folder. Those, conflicted, are going to get cleared!</source>
         <translation>B&apos;at un&apos;iscòrriu carrighende unos archìvios a sa cartella. Cussos in iscòrriu ant a èssere cantzellados!</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1057"/>
+        <location filename="../src/libsync/discovery.cpp" line="1084"/>
         <source>Conflict when uploading a folder. It&apos;s going to get cleared!</source>
         <translation>Iscòrriu carrighende una cartella. Custa s&apos;at a cantzellare!</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1060"/>
+        <location filename="../src/libsync/discovery.cpp" line="1087"/>
         <source>Conflict when uploading a file. It&apos;s going to get removed!</source>
         <translation>Iscòrriu carrighende un&apos;archìviu. Custu s&apos;at a cantzellare!</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1390"/>
+        <location filename="../src/libsync/discovery.cpp" line="1417"/>
         <source>Ignored because of the &quot;choose what to sync&quot; blacklist</source>
         <translation>Ignoradu ca in sa lista niedda de is cosas de no sincronizare</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1423"/>
+        <location filename="../src/libsync/discovery.cpp" line="1450"/>
         <source>Not allowed because you don&apos;t have permission to add subfolders to that folder</source>
         <translation>Non podes ca non tenes su permissu pro agiùnghere sutacartellas a custas cartellas</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1428"/>
+        <location filename="../src/libsync/discovery.cpp" line="1455"/>
         <source>Not allowed because you don&apos;t have permission to add files in that folder</source>
         <translation> Non podes ca non tenes su permissu pro agiùnghere archìvios a custa cartella</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1441"/>
+        <location filename="../src/libsync/discovery.cpp" line="1468"/>
         <source>Not allowed to upload this file because it is read-only on the server, restoring</source>
         <translation>Non podes carrigare custu archìviu ca in su serbidore podes isceti lèghere, riprìstinu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1463"/>
+        <location filename="../src/libsync/discovery.cpp" line="1490"/>
         <source>Moved to invalid target, restoring</source>
         <translation>Tramudadu a un&apos;indiritzu non bàlidu, riprìstinu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1476"/>
+        <location filename="../src/libsync/discovery.cpp" line="1503"/>
         <source>Not allowed to remove, restoring</source>
         <translation>Non ddu podes bogare, riprìstinu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1585"/>
+        <location filename="../src/libsync/discovery.cpp" line="1612"/>
         <source>Error while reading the database</source>
         <translation>Errore leghende sa base de datos</translation>
     </message>
@@ -3494,7 +3521,7 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation>Su serbidore at dadu errore leghende sa cartella &apos;%1&apos; : %2</translation>
     </message>
     <message>
-        <location filename="../src/libsync/discovery.cpp" line="1646"/>
+        <location filename="../src/libsync/discovery.cpp" line="1673"/>
         <source>Server replied with an error while reading directory &quot;%1&quot; : %2</source>
         <translation>Su serbidore nd&apos;at torradu un&apos;errore leghende sa cartella &quot;%1&quot; : %2</translation>
     </message>
@@ -3507,12 +3534,17 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation>Errore iscriende metadatos in sa base de datos</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1141"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1136"/>
+        <source>Error updating metadata due to invalid modified time</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1152"/>
         <source>Error updating metadata: %1</source>
         <translation>Errore agiornende is metadatos: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/owncloudpropagator.cpp" line="1145"/>
+        <location filename="../src/libsync/owncloudpropagator.cpp" line="1156"/>
         <source>File is currently in use</source>
         <translation>S&apos;archìviu est giai impreadu</translation>
     </message>
@@ -3531,13 +3563,13 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
     </message>
     <message>
         <location filename="../src/libsync/propagatedownload.cpp" line="496"/>
-        <location filename="../src/libsync/propagatedownload.cpp" line="1112"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="1149"/>
         <source>File has changed since discovery</source>
         <translation>Archìviu cambiadu in pessu rilevadu</translation>
     </message>
     <message>
         <location filename="../src/libsync/propagatedownload.cpp" line="522"/>
-        <location filename="../src/libsync/propagatedownload.cpp" line="613"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="628"/>
         <source>File %1 cannot be downloaded because of a local file name clash!</source>
         <translation>S&apos;archìviu %1 nn faghet a dd&apos;iscarrigare pro unu cunflitu cun su nùmene de s&apos;archìviu locale!</translation>
     </message>
@@ -3547,22 +3579,22 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation> S&apos;archìviu %1 non podet èssere iscarrigadu pro unu cunflitu cun un&apos;archìviu locale!</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="665"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="680"/>
         <source>The download would reduce free local disk space below the limit</source>
         <translation>S&apos;iscarrigamentu at a torrare a suta de su lìmite su logu lìberu in su discu locale </translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="669"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="684"/>
         <source>Free space on disk is less than %1</source>
         <translation>Su logu lìberu in su discu est prus pagu de %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="790"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="805"/>
         <source>File was deleted from server</source>
         <translation>S&apos;archìviu est cantzelladu dae su serbidore</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="859"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="878"/>
         <source>The file could not be downloaded completely.</source>
         <translation>No at fatu a iscarrigare s&apos;archìviu de su totu</translation>
     </message>
@@ -3572,12 +3604,12 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation> S&apos;archìviu iscarrigadu est bòidu mancari su serbidore indicaret una mannària de %1.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="866"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="885"/>
         <source>The downloaded file is empty, but the server said it should have been %1.</source>
         <translation> S&apos;archìviu iscarrigadu est bòidu, ma su serbidore at indicadu una mannària de %1.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="1057"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="1076"/>
         <source>File %1 cannot be saved because of a local file name clash!</source>
         <translation>S&apos;archìviu %1 non podet èssere sarvadu pro unu cunflitu in unu&apos;archìviu locale!</translation>
     </message>
@@ -3587,12 +3619,18 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation>Errore iscriende is metadatos in su base de datos</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="1183"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="1082"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="1095"/>
+        <source>File %1 has invalid modified time reported by server. Do not save it.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/libsync/propagatedownload.cpp" line="1220"/>
         <source>Error updating metadata: %1</source>
         <translation>Errore agiornende is metadatos: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagatedownload.cpp" line="1186"/>
+        <location filename="../src/libsync/propagatedownload.cpp" line="1223"/>
         <source>The file %1 is currently in use</source>
         <translation>S&apos;archìviu %1 est giai impreadu</translation>
     </message>
@@ -3780,38 +3818,46 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
 <context>
     <name>OCC::PropagateUploadFileCommon</name>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="237"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="216"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="322"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="397"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="410"/>
+        <source>File %1 has invalid modified time. Do not upload to the server.</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/libsync/propagateupload.cpp" line="243"/>
         <source>Failed to upload encrypted file.</source>
         <translation>Carrigamentu de s&apos;archìviu criptadu faddidu</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="268"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="274"/>
         <source>File %1 cannot be uploaded because another file with the same name, differing only in case, exists</source>
         <translation>S&apos;archìviu %1 non podet èssere carrigadu ca ddo est un&apos;àteru archìviu cun su pròpiu nùmene, ma cun diferèntzias intre maiùsculas e minùsculas</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="279"/>
-        <location filename="../src/libsync/propagateupload.cpp" line="673"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="285"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="703"/>
         <source>Upload of %1 exceeds the quota for the folder</source>
         <translation> Su carrigamentu de %1 sùperat sa cuota a cartella</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="384"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="394"/>
         <source>File Removed (start upload) %1</source>
         <translation>Archìviu bogadu (aviu de su carrigamentu) %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="394"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="420"/>
         <source>Local file changed during syncing. It will be resumed.</source>
         <translation> S&apos;archìviu locale est istadu modificadu durante sa sincronizatzione. At a èssere ripristinadu.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="405"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="431"/>
         <source>Local file changed during sync.</source>
         <translation>Archìviu locale cambiadu durante sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="415"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="441"/>
         <source>Failed to unlock encrypted folder.</source>
         <translation>Isblocu de sa cartella criptada faddidu.</translation>
     </message>
@@ -3821,12 +3867,12 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <translation>Errore iscriende is metadatos in sa base de datos</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="765"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="799"/>
         <source>Error updating metadata: %1</source>
         <translation>Errore agiornende is metadatos: %1</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateupload.cpp" line="768"/>
+        <location filename="../src/libsync/propagateupload.cpp" line="802"/>
         <source>The file %1 is currently in use</source>
         <translation>S&apos;archìviu %1 est giai impreadu</translation>
     </message>
@@ -3834,32 +3880,32 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
 <context>
     <name>OCC::PropagateUploadFileNG</name>
     <message>
-        <location filename="../src/libsync/propagateuploadng.cpp" line="418"/>
+        <location filename="../src/libsync/propagateuploadng.cpp" line="430"/>
         <source>The local file was removed during sync.</source>
         <translation>S&apos;archìviu locale est istadu bogadu durante sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadng.cpp" line="429"/>
+        <location filename="../src/libsync/propagateuploadng.cpp" line="445"/>
         <source>Local file changed during sync.</source>
         <translation>Archìviu locale cambiadu durante sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadng.cpp" line="468"/>
+        <location filename="../src/libsync/propagateuploadng.cpp" line="484"/>
         <source>Poll URL missing</source>
         <translation>Mancat su URL de su sondàgiu </translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadng.cpp" line="477"/>
+        <location filename="../src/libsync/propagateuploadng.cpp" line="493"/>
         <source>Unexpected return code from server (%1)</source>
         <translation>Còdighe de essida inatesu dae su serbidore (%1) </translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadng.cpp" line="484"/>
+        <location filename="../src/libsync/propagateuploadng.cpp" line="500"/>
         <source>Missing File ID from server</source>
         <translation>Archìviu ID mancante dae su serbidore</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadng.cpp" line="498"/>
+        <location filename="../src/libsync/propagateuploadng.cpp" line="514"/>
         <source>Missing ETag from server</source>
         <translation> Eeticheta chi mancat dae su serbidore</translation>
     </message>
@@ -3867,22 +3913,22 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
 <context>
     <name>OCC::PropagateUploadFileV1</name>
     <message>
-        <location filename="../src/libsync/propagateuploadv1.cpp" line="216"/>
+        <location filename="../src/libsync/propagateuploadv1.cpp" line="228"/>
         <source>Poll URL missing</source>
         <translation>Mancat su URL de su sondàgiu </translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadv1.cpp" line="240"/>
+        <location filename="../src/libsync/propagateuploadv1.cpp" line="252"/>
         <source>The local file was removed during sync.</source>
         <translation>S&apos;archìviu locale est bogadu durante sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadv1.cpp" line="251"/>
+        <location filename="../src/libsync/propagateuploadv1.cpp" line="267"/>
         <source>Local file changed during sync.</source>
         <translation>Archìviu locale cambiadu durante sa sincronizatzione.</translation>
     </message>
     <message>
-        <location filename="../src/libsync/propagateuploadv1.cpp" line="265"/>
+        <location filename="../src/libsync/propagateuploadv1.cpp" line="281"/>
         <source>The server did not acknowledge the last chunk. (No e-tag was present)</source>
         <translation>Su serbidore no at reconnotu s&apos;ùrtimu cantu. (Non bi fiat peruna eticheta eletrònica)</translation>
     </message>
@@ -5072,24 +5118,24 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
 <context>
     <name>OCC::Theme</name>
     <message>
-        <location filename="../src/libsync/theme.cpp" line="517"/>
+        <location filename="../src/libsync/theme.cpp" line="508"/>
         <source>&lt;p&gt;%1 Desktop Client&lt;/p&gt;</source>
         <extracomment>Example text: &quot;&lt;p&gt;Nextcloud Desktop Client&lt;/p&gt;&quot; (%1 is the application name)</extracomment>
         <translation>&lt;p&gt;%1 Cliente de iscrivania&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/libsync/theme.cpp" line="520"/>
-        <location filename="../src/libsync/theme.cpp" line="535"/>
+        <location filename="../src/libsync/theme.cpp" line="511"/>
+        <location filename="../src/libsync/theme.cpp" line="526"/>
         <source>&lt;p&gt;Version %1. For more information please click &lt;a href=&apos;%2&apos;&gt;here&lt;/a&gt;.&lt;/p&gt;</source>
         <translation>&lt;p&gt;Versione %1. Pro àteras informatziones incarca &lt;a href=&apos;%2&apos;&gt;inoghe&lt;/a&gt;.&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/libsync/theme.cpp" line="524"/>
+        <location filename="../src/libsync/theme.cpp" line="515"/>
         <source>&lt;p&gt;&lt;small&gt;Using virtual files plugin: %1&lt;/small&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;small&gt;Impreende s&apos;estensione de archìvios virtuales: %1&lt;/small&gt;&lt;/p&gt;</translation>
     </message>
     <message>
-        <location filename="../src/libsync/theme.cpp" line="539"/>
+        <location filename="../src/libsync/theme.cpp" line="530"/>
         <source>&lt;p&gt;This release was supplied by %1&lt;/p&gt;</source>
         <translation>&lt;p&gt;Custa versione est dispensada dae %1&lt;/p&gt;</translation>
     </message>
@@ -5276,6 +5322,24 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
         <location filename="../src/common/vfs.cpp" line="75"/>
         <source>The Virtual filesystem feature requires a NTFS file system, %1 is using %2</source>
         <translation> Sa funtzionalidade de s&apos;archìviu de sistema rechedet unu archìviu de sistema NTFS, %1 est impreende %2</translation>
+    </message>
+</context>
+<context>
+    <name>OCC::VfsSuffix</name>
+    <message>
+        <location filename="../src/libsync/vfs/suffix/vfs_suffix.cpp" line="72"/>
+        <location filename="../src/libsync/vfs/suffix/vfs_suffix.cpp" line="82"/>
+        <source>Error updating metadata due to invalid modified time</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
+    <name>OCC::VfsXAttr</name>
+    <message>
+        <location filename="../src/libsync/vfs/xattr/vfs_xattr.cpp" line="73"/>
+        <location filename="../src/libsync/vfs/xattr/vfs_xattr.cpp" line="83"/>
+        <source>Error updating metadata due to invalid modified time</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -6287,7 +6351,7 @@ Custa est una modalidade noa, isperimentale. Si detzides de dda impreare, sinnal
 <context>
     <name>nextcloudTheme::about()</name>
     <message>
-        <location filename="../src/libsync/theme.cpp" line="496"/>
+        <location filename="../src/libsync/theme.cpp" line="487"/>
         <source>&lt;p&gt;&lt;small&gt;Built from Git revision &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; on %3, %4 using Qt %5, %6&lt;/small&gt;&lt;/p&gt;</source>
         <translation>&lt;p&gt;&lt;small&gt;Cumpiladu dae sa versione Git &lt;a href=&quot;%1&quot;&gt;%2&lt;/a&gt; on %3, %4 impreende Qt %5, %6&lt;/small&gt;&lt;/p&gt;</translation>
     </message>

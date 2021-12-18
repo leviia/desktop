@@ -389,7 +389,13 @@ void ProcessDirectoryJob::processFile(PathTuple path,
     item->_originalFile = path._original;
     item->_previousSize = dbEntry._fileSize;
     item->_previousModtime = dbEntry._modtime;
-    item->_renameTarget = localEntry.renameName;
+    if (!localEntry.renameName.isEmpty()) {
+        if (_dirItem) {
+            item->_renameTarget = _dirItem->_file + "/" + localEntry.renameName;
+        } else {
+            item->_renameTarget = localEntry.renameName;
+        }
+    }
 
     if (dbEntry._modtime == localEntry.modtime && dbEntry._type == ItemTypeVirtualFile && localEntry.type == ItemTypeFile) {
         item->_type = ItemTypeFile;
@@ -524,6 +530,19 @@ void ProcessDirectoryJob::processFileAnalyzeRemoteInfo(
             item->_instruction = CSYNC_INSTRUCTION_SYNC;
             item->_type = ItemTypeVirtualFileDownload;
         } else if (dbEntry._etag != serverEntry.etag) {
+            item->_direction = SyncFileItem::Down;
+            item->_modtime = serverEntry.modtime;
+            item->_size = sizeOnServer;
+            if (serverEntry.isDirectory) {
+                ENFORCE(dbEntry.isDirectory());
+                item->_instruction = CSYNC_INSTRUCTION_UPDATE_METADATA;
+            } else if (!localEntry.isValid() && _queryLocal != ParentNotChanged) {
+                // Deleted locally, changed on server
+                item->_instruction = CSYNC_INSTRUCTION_NEW;
+            } else {
+                item->_instruction = CSYNC_INSTRUCTION_SYNC;
+            }
+        } else if (dbEntry._modtime <= 0 && serverEntry.modtime > 0) {
             item->_direction = SyncFileItem::Down;
             item->_modtime = serverEntry.modtime;
             item->_size = sizeOnServer;
@@ -932,6 +951,14 @@ void ProcessDirectoryJob::processFileAnalyzeLocalInfo(
             item->_checksumHeader.clear();
             item->_size = localEntry.size;
             item->_modtime = localEntry.modtime;
+            item->_type = localEntry.isDirectory ? ItemTypeDirectory : ItemTypeFile;
+            _childModified = true;
+        } else if (dbEntry._modtime > 0 && localEntry.modtime <= 0) {
+            item->_instruction = CSYNC_INSTRUCTION_SYNC;
+            item->_direction = SyncFileItem::Down;
+            item->_size = localEntry.size > 0 ? localEntry.size : dbEntry._fileSize;
+            item->_modtime = dbEntry._modtime;
+            item->_previousModtime = dbEntry._modtime;
             item->_type = localEntry.isDirectory ? ItemTypeDirectory : ItemTypeFile;
             _childModified = true;
         } else {
