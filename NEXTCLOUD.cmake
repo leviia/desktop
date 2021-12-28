@@ -44,6 +44,7 @@ file(COPY ${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/installer-background.s
 configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/state-offline.svg ${CMAKE_SOURCE_DIR}/theme/colored/state-offline.svg)
 configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/wizard_logo.svg ${CMAKE_SOURCE_DIR}/theme/colored/wizard_logo.svg)
 configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/wizard-nextcloud.svg ${CMAKE_SOURCE_DIR}/theme/colored/wizard-nextcloud.svg)
+configure_file(${CMAKE_SOURCE_DIR}/brandings/${BRANDING_VALUE}/Leviia-icon-win-folder.svg ${CMAKE_SOURCE_DIR}/theme/colored/icons/${APPLICATION_ICON_NAME}-icon-win-folder.svg)
 
 message("NEXTCLOUD_BACKGROUND_COLOR")
 message("${NEXTCLOUD_BACKGROUND_COLOR}")
