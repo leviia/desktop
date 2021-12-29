@@ -3042,7 +3042,7 @@ o dodatkowe uprawnienia podczas procesu aktualizacji.</translation>
     <message>
         <location filename="../src/libsync/owncloudpropagator.cpp" line="776"/>
         <source>Impossible to get modification time for file in conflict %1</source>
-        <translation type="unfinished"/>
+        <translation>Nie można uzyskać czasu modyfikacji pliku w konflikcie %1</translation>
     </message>
     <message>
         <location filename="../src/libsync/owncloudpropagator.cpp" line="776"/>
@@ -3118,7 +3118,7 @@ Nie zaleca się korzystania z niego.</translation>
     <message>
         <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="239"/>
         <source>Server address does not seem to be valid</source>
-        <translation>Adres serwera jest nieprawidłowy</translation>
+        <translation>Adres serwera wygląda na nieprawidłowy</translation>
     </message>
     <message>
         <location filename="../src/gui/wizard/owncloudsetuppage.cpp" line="293"/>
