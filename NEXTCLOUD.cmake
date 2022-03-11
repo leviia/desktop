@@ -75,6 +75,8 @@ option( WITH_PROVIDERS "Build with providers list" ON )
 
 option( ENFORCE_VIRTUAL_FILES_SYNC_FOLDER "Enforce use of virtual files sync folder when available" OFF )
 
+option( DO_NOT_USE_PROXY "Do not use system wide proxy, instead always do a direct connection to server" OFF )
+
 ## Theming options
 set( APPLICATION_WIZARD_HEADER_BACKGROUND_COLOR ${NEXTCLOUD_BACKGROUND_COLOR} )
 set( APPLICATION_WIZARD_HEADER_TITLE_COLOR "#ffffff" )
