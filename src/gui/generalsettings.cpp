@@ -149,6 +149,10 @@ GeneralSettings::GeneralSettings(QWidget *parent)
     _ui->serverNotificationsCheckBox->setToolTip(tr("Server notifications that require attention."));
 
     connect(_ui->showInExplorerNavigationPaneCheckBox, &QAbstractButton::toggled, this, &GeneralSettings::slotShowInExplorerNavigationPane);
+    connect(_ui->advancedFolderSyncCheckBox, &QAbstractButton::toggled, this, [this](bool checked){
+        ConfigFile cfgFile;
+        cfgFile.setAdvancedFolderSync(checked);
+    });
 
     // Rename 'Explorer' appropriately on non-Windows
 #ifdef Q_OS_MAC
@@ -249,6 +253,7 @@ void GeneralSettings::loadMiscSettings()
     ConfigFile cfgFile;
     _ui->monoIconsCheckBox->setChecked(cfgFile.monoIcons());
     _ui->serverNotificationsCheckBox->setChecked(cfgFile.optionalServerNotifications());
+    _ui->advancedFolderSyncCheckBox->setChecked(cfgFile.advancedFolderSync());
     _ui->showInExplorerNavigationPaneCheckBox->setChecked(cfgFile.showInExplorerNavigationPane());
     _ui->crashreporterCheckBox->setChecked(cfgFile.crashReporter());
     auto newFolderLimit = cfgFile.newBigFolderSizeLimit();

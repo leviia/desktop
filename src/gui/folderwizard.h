@@ -87,6 +87,8 @@ public:
     void initializePage() override;
     void cleanupPage() override;
 
+    void selectRoot();
+
 protected slots:
 
     void showWarn(const QString & = QString()) const;
@@ -131,6 +133,8 @@ public:
     void initializePage() override;
     void cleanupPage() override;
 
+    void uncheckVFS();
+
 private slots:
     void virtualFilesCheckboxClicked();
 
@@ -158,6 +162,8 @@ public:
 
     bool eventFilter(QObject *watched, QEvent *event) override;
     void resizeEvent(QResizeEvent *event) override;
+
+    void express();
 
 private:
     FolderWizardLocalPath *_folderWizardSourcePage;

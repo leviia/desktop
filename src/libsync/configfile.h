@@ -152,6 +152,9 @@ public:
     bool optionalServerNotifications() const;
     void setOptionalServerNotifications(bool show);
 
+    bool advancedFolderSync() const;
+    void setAdvancedFolderSync(bool enabled);
+
     bool showInExplorerNavigationPane() const;
     void setShowInExplorerNavigationPane(bool show);
 
