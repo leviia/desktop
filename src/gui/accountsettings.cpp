@@ -416,7 +416,7 @@ void AccountSettings::slotOpenMakeFolderDialog()
     }();
 
     if (!fileName.isEmpty()) {
-        const auto folderCreationDialog = new FolderCreationDialog(fileName, this); 
+        const auto folderCreationDialog = new FolderCreationDialog(fileName, this);
         folderCreationDialog->setAttribute(Qt::WA_DeleteOnClose);
         folderCreationDialog->open();
     }
@@ -668,7 +668,12 @@ void AccountSettings::slotAddFolder()
 
     connect(folderWizard, &QDialog::accepted, this, &AccountSettings::slotFolderWizardAccepted);
     connect(folderWizard, &QDialog::rejected, this, &AccountSettings::slotFolderWizardRejected);
-    folderWizard->open();
+
+    ConfigFile cfgFile;
+    if (cfgFile.advancedFolderSync())
+        folderWizard->open();
+    else
+        folderWizard->express();
 }
 
 
