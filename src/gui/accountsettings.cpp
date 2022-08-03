@@ -600,7 +600,7 @@ void AccountSettings::slotCustomContextMenuRequested(const QPoint &pos)
     if (Theme::instance()->showVirtualFilesOption()
         && !folder->virtualFilesEnabled() && Vfs::checkAvailability(folder->path())) {
         const auto mode = bestAvailableVfsMode();
-        if (mode == Vfs::WindowsCfApi || ConfigFile().showExperimentalOptions()) {
+        if (true) {
             ac = menu->addAction(tr("Enable virtual file support %1 …").arg(mode == Vfs::WindowsCfApi ? QString() : tr("(experimental)")));
             // TODO: remove when UX decision is made
             ac->setEnabled(!Utility::isPathWindowsDrivePartitionRoot(folder->path()));

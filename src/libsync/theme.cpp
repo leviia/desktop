@@ -872,8 +872,7 @@ QPixmap Theme::createColorAwarePixmap(const QString &name)
 
 bool Theme::showVirtualFilesOption() const
 {
-    const auto vfsMode = bestAvailableVfsMode();
-    return ConfigFile().showExperimentalOptions() || vfsMode == Vfs::WindowsCfApi;
+    return true;
 }
 
 bool Theme::enforceVirtualFilesSyncFolder() const
@@ -898,7 +897,7 @@ QColor Theme::errorBoxBackgroundColor() const
 }
 
 QColor Theme::errorBoxBorderColor() const
-{ 
+{
     return QColor{"black"};
 }
 
