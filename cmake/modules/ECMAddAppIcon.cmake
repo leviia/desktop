@@ -200,7 +200,7 @@ function(ecm_add_app_icon appsources)
         set(saved_CMAKE_MODULE_PATH "${CMAKE_MODULE_PATH}")
         set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_FIND_MODULE_DIR})
         find_package(Png2Ico)
-        find_package(IcoTool)
+#        find_package(IcoTool)
         set(CMAKE_MODULE_PATH "${saved_CMAKE_MODULE_PATH}")
 
         function(create_windows_icon_and_rc command args deps)

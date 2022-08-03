@@ -23,6 +23,8 @@ endif()
 
 configure_file(${CMAKE_SOURCE_DIR}/theme.qrc.in ${CMAKE_SOURCE_DIR}/theme.qrc)
 set(theme_dir ${CMAKE_SOURCE_DIR}/theme)
+set(admin_osx_dir ${CMAKE_SOURCE_DIR}/admin/osx)
+set(admin_win_dir ${CMAKE_SOURCE_DIR}/admin/win)
 
 set(client_UI_SRCS
     accountsettings.ui
@@ -396,12 +398,89 @@ function(generate_sized_png_from_svg icon_path size)
 
   if (EXISTS "${icon_name_dir}/${size}-${icon_name_wle}.png")
     return()
-  endif()
+  endif ()
 
   set(icon_output_name "${size}-${icon_name_wle}.png")
   message(STATUS "Generate ${icon_output_name}")
   execute_process(COMMAND
     "${SVG_CONVERTER}" -w ${size} -h ${size} "${icon_path}" -o "${icon_output_name}"
+    WORKING_DIRECTORY "${icon_name_dir}"
+    RESULT_VARIABLE
+    SVG_CONVERTER_SIDEBAR_ERROR
+    OUTPUT_QUIET
+    ERROR_QUIET)
+
+  if (SVG_CONVERTER_SIDEBAR_ERROR)
+    message(FATAL_ERROR
+      "${SVG_CONVERTER} could not generate icon: ${SVG_CONVERTER_SIDEBAR_ERROR}")
+  else()
+  endif()
+endfunction()
+
+function(generate_sized_png_from_svg_v2 icon_path size)
+  get_filename_component(icon_name_dir ${icon_path} DIRECTORY)
+  get_filename_component(icon_name_wle ${icon_path} NAME_WLE)
+
+  set(icon_output_name "${icon_name_wle}-${size}.png")
+  message(STATUS "Generate ${icon_output_name}")
+  execute_process(COMMAND
+    "${SVG_CONVERTER}" -w ${size} -h ${size} "${icon_path}" -o "${icon_output_name}"
+    WORKING_DIRECTORY "${icon_name_dir}"
+    RESULT_VARIABLE
+    SVG_CONVERTER_SIDEBAR_ERROR
+    OUTPUT_QUIET
+    ERROR_QUIET)
+
+  if (SVG_CONVERTER_SIDEBAR_ERROR)
+    message(FATAL_ERROR
+      "${SVG_CONVERTER} could not generate icon: ${SVG_CONVERTER_SIDEBAR_ERROR}")
+  else()
+  endif()
+endfunction()
+
+function(generate_sized_png_from_svg_x icon_path w h factor)
+  get_filename_component(icon_name_dir ${icon_path} DIRECTORY)
+  get_filename_component(icon_name_wle ${icon_path} NAME_WLE)
+
+  if(factor EQUAL 1)
+    set(icon_output_name "${icon_name_wle}.png")
+  else()
+    set(icon_output_name "${icon_name_wle}_${factor}x.png")
+  endif()
+
+  math(EXPR WIDTH "${w}*${factor}")
+  math(EXPR HEIGHT "${h}*${factor}")
+
+  execute_process(COMMAND
+    "${SVG_CONVERTER}" -w ${WIDTH} -h ${HEIGHT} "${icon_path}" -o "${icon_output_name}"
+    WORKING_DIRECTORY "${icon_name_dir}"
+    RESULT_VARIABLE
+    SVG_CONVERTER_SIDEBAR_ERROR
+    OUTPUT_QUIET
+    ERROR_QUIET)
+
+  if (SVG_CONVERTER_SIDEBAR_ERROR)
+    message(FATAL_ERROR
+      "${SVG_CONVERTER} could not generate icon: ${SVG_CONVERTER_SIDEBAR_ERROR}")
+  else()
+  endif()
+endfunction()
+
+function(generate_sized_png_from_svg_at_x icon_path w h factor)
+  get_filename_component(icon_name_dir ${icon_path} DIRECTORY)
+  get_filename_component(icon_name_wle ${icon_path} NAME_WLE)
+
+  if(factor EQUAL 1)
+    set(icon_output_name "${icon_name_wle}.png")
+  else()
+    set(icon_output_name "${icon_name_wle}@${factor}x.png")
+  endif()
+
+  math(EXPR WIDTH "${w}*${factor}")
+  math(EXPR HEIGHT "${h}*${factor}")
+
+  execute_process(COMMAND
+    "${SVG_CONVERTER}" -w ${WIDTH} -h ${HEIGHT} "${icon_path}" -o "${icon_output_name}"
     WORKING_DIRECTORY "${icon_name_dir}"
     RESULT_VARIABLE
     SVG_CONVERTER_SIDEBAR_ERROR
@@ -481,6 +560,35 @@ else()
         generate_sized_png_from_svg(${APP_ICON_SVG} ${size})
     endforeach()
 endif()
+
+list(APPEND V2_SVG_LIST
+"${theme_dir}/colored/state-offline.svg"
+)
+foreach(V2_SVG IN LISTS V2_SVG_LIST)
+generate_sized_png_from_svg_v2(${V2_SVG} 16)
+generate_sized_png_from_svg_v2(${V2_SVG} 32)
+generate_sized_png_from_svg_v2(${V2_SVG} 64)
+generate_sized_png_from_svg_v2(${V2_SVG} 128)
+generate_sized_png_from_svg_v2(${V2_SVG} 256)
+endforeach()
+
+list(APPEND X_SVG_LIST
+"${theme_dir}/colored/external.svg"
+"${theme_dir}/colored/folder.svg"
+"${theme_dir}/colored/wizard_logo.svg"
+"${theme_dir}/colored/wizard-files.svg"
+"${theme_dir}/colored/wizard-groupware.svg"
+"${theme_dir}/colored/wizard-nextcloud.svg"
+"${theme_dir}/colored/wizard-talk.svg"
+)
+foreach(X_SVG IN LISTS X_SVG_LIST)
+generate_sized_png_from_svg_at_x(${X_SVG} 100 100 1)
+generate_sized_png_from_svg_at_x(${X_SVG} 100 100 2)
+endforeach()
+
+set(X_SVG "${admin_osx_dir}/installer-background.svg")
+generate_sized_png_from_svg_x(${X_SVG} 320 200 1)
+generate_sized_png_from_svg_x(${X_SVG} 320 200 2)
 
 file(GLOB_RECURSE OWNCLOUD_ICONS "${theme_dir}/colored/*-${APPLICATION_ICON_NAME}-icon*")
 
